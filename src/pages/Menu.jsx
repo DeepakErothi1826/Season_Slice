@@ -4,17 +4,15 @@ import { AnimatePresence, motion } from 'framer-motion';
 import CategoryTabs from '../components/CategoryTabs';
 import MenuCard from '../components/MenuCard';
 import ScrollReveal from '../components/ScrollReveal';
-import { menuItems, mangoItems } from '../data/menuData';
+import { menuItems } from '../data/menuData';
 
 const MenuPage = () => {
   const [active, setActive] = useState('all');
 
-  const allItems = [...menuItems, ...mangoItems];
-
   const filtered = useMemo(() => {
-    if (active === 'all') return allItems;
-    if (active === 'seasonal') return allItems.filter((i) => i.seasonal);
-    return allItems.filter((i) => i.category === active);
+    if (active === 'all') return menuItems;
+    if (active === 'seasonal') return menuItems.filter((i) => i.seasonal);
+    return menuItems.filter((i) => i.category === active);
   }, [active]);
 
   return (

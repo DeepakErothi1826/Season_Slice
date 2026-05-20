@@ -2,9 +2,9 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Star, ShoppingBag, Heart, Check } from 'lucide-react';
-import { menuItems, mangoItems } from '../data/menuData';
+import { menuItems } from '../data/menuData';
 
-const allItems = [...menuItems, ...mangoItems];
+const allItems = menuItems;
 
 const ProductDetail = () => {
   const { id } = useParams();
