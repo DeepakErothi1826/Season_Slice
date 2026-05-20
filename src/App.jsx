@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/Navbar';
@@ -21,28 +21,24 @@ const pageVariants = {
 
 function AnimatedPage({ children }) {
   return (
-    <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+    <motion.div 
+      variants={pageVariants} 
+      initial="initial" 
+      animate="animate" 
+      exit="exit"
+      className="min-h-screen"
+    >
       {children}
     </motion.div>
   );
 }
 
 function App() {
-  const [showSplash, setShowSplash] = useState(false);
-  const [hasSeenSplash, setHasSeenSplash] = useState(false);
+  const [showSplash, setShowSplash] = useState(true);
   const location = useLocation();
-
-  useEffect(() => {
-    const hasSeen = localStorage.getItem('seasonSliceSplash');
-    if (!hasSeen) {
-      setShowSplash(true);
-      setHasSeenSplash(true);
-    }
-  }, []);
 
   const handleSplashComplete = () => {
     setShowSplash(false);
-    localStorage.setItem('seasonSliceSplash', 'true');
   };
 
   return (

@@ -74,6 +74,10 @@
 }
 
 @layer utilities {
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-coffee via-coffee-light to-gold;
   }

@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Star, ShoppingBag, Heart, Check } from 'lucide-react';
 import { menuItems } from '../data/menuData';
 
@@ -9,8 +10,18 @@ const allItems = menuItems;
 const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [isLiked, setIsLiked] = useState(false);
+  const [likeLoading, setLikeLoading] = useState(false);
   
   const item = allItems.find((i) => i.id === parseInt(id));
+
+  const handleLike = async () => {
+    if (likeLoading) return;
+    setLikeLoading(true);
+    await new Promise(resolve => setTimeout(resolve, 600));
+    setIsLiked(!isLiked);
+    setLikeLoading(false);
+  };
 
   if (!item) {
     return (
@@ -94,9 +105,41 @@ const ProductDetail = () => {
                   <ShoppingBag size={18} />
                   Add to Cart
                 </motion.button>
-                <button className="p-4 rounded-full bg-gradient-to-r from-rose-100 to-pink-100 hover:from-rose-200 hover:to-pink-200 text-rose transition-colors shadow-md">
-                  <Heart size={20} />
-                </button>
+                <motion.button
+                  whileTap={{ scale: 0.9 }}
+                  onClick={handleLike}
+                  disabled={likeLoading}
+                  className={`p-4 rounded-full transition-all shadow-md ${
+                    isLiked 
+                      ? 'bg-gradient-to-r from-rose-500 to-pink-500 text-white' 
+                      : 'bg-gradient-to-r from-rose-100 to-pink-100 hover:from-rose-200 hover:to-pink-200 text-rose'
+                  }`}
+                >
+                  <AnimatePresence mode="wait">
+                    {likeLoading ? (
+                      <motion.div
+                        key="loading"
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.5 }}
+                        className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full"
+                        style={{ animation: 'spin 0.6s linear infinite' }}
+                      />
+                    ) : (
+                      <motion.div
+                        key="heart"
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ type: 'spring', stiffness: 500, damping: 25 }}
+                      >
+                        <Heart 
+                          size={20} 
+                          className={isLiked ? 'fill-white' : ''}
+                        />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.button>
               </div>
 
               <div className="bg-gradient-to-r from-cream-light to-white rounded-2xl p-6 border border-gray-100">
