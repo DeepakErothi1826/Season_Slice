@@ -49,8 +49,8 @@ const ProductDetail = () => {
               className="relative"
             >
               <div className="bg-gradient-to-br from-cream-light via-rose-50 to-gold/20 rounded-3xl p-12 flex items-center justify-center shadow-2xl border border-gold/10">
-                <div className="w-full aspect-square bg-white rounded-2xl shadow-lg flex items-center justify-center border-2 border-gray-100">
-                  <span className="text-[120px]">🎂</span>
+                <div className="w-full aspect-square bg-white rounded-2xl shadow-lg flex items-center justify-center border-2 border-gray-100 overflow-hidden">
+                  <img src={item.image} alt={item.name} className="w-full h-full object-cover" onError={(e) => { e.target.style.display = 'none'; }} />
                 </div>
               </div>
               {item.seasonal && (

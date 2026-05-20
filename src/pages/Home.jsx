@@ -81,7 +81,7 @@ const Home = () => {
                 className="bg-white rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 cursor-pointer group border border-gray-100"
               >
                 <div className="aspect-square sm:aspect-[4/3] md:aspect-square bg-gradient-to-br from-cream-light to-rose-50 flex items-center justify-center overflow-hidden">
-                  <img src={cat.image} alt={cat.title} className="w-full h-full object-cover" onError={(e) => { e.target.style.display = 'none'; e.target.parentElement.innerHTML = '<span class="text-4xl sm:text-5xl md:text-6xl group-hover:scale-110 transition-transform duration-300">🎂</span>'; }} />
+                  <img src={cat.image} alt={cat.title} className="w-full h-full object-cover" onError={(e) => { e.target.style.display = 'none'; }} />
                 </div>
                 <div className="p-3 sm:p-4 text-center">
                   <h3 className="font-display text-sm sm:text-base md:text-lg font-bold text-coffee mb-1">{cat.title}</h3>
@@ -132,22 +132,17 @@ const Home = () => {
             <p className="text-coffee-light/60 mt-4 max-w-xl mx-auto">Fresh mango treats available this season!</p>
           </motion.div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
-            {[
-              { name: 'Regular Mango Cake', price: '400', emoji: '🥭' },
-              { name: 'Bischof Mango', price: '500', emoji: '🍰' },
-              { name: 'Premium Alphonso Cake', price: '600', emoji: '🎂' },
-              { name: 'Season Slice Mango Cake', price: '700', emoji: '🍁' },
-            ].map((item, index) => (
+            {menuItems.filter(i => i.seasonal || i.category === 'mango').slice(0, 4).map((item, index) => (
               <motion.div
-                key={item.name}
+                key={item.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 className="bg-gradient-to-br from-white to-amber-50 rounded-2xl p-6 text-center hover:shadow-xl transition-all border border-amber-100"
               >
-                <div className="w-20 h-20 bg-gradient-to-br from-gold/20 to-amber-200 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-4xl">{item.emoji}</span>
+                <div className="w-20 h-20 bg-gradient-to-br from-gold/20 to-amber-200 rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden">
+                  <img src={item.image} alt={item.name} className="w-full h-full object-cover" onError={(e) => { e.target.style.display = 'none'; }} />
                 </div>
                 <h3 className="font-display text-base font-bold text-coffee mb-2">{item.name}</h3>
                 <span className="font-display text-2xl text-gradient font-bold bg-gradient-to-r from-gold to-amber-500 bg-clip-text">{item.price} Rs</span>

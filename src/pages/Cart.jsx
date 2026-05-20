@@ -45,8 +45,8 @@ const CartPage = () => {
                     animate={{ opacity: 1, y: 0 }}
                     className="flex gap-6 bg-white rounded-2xl p-6 shadow-sm"
                   >
-                    <div className="w-24 h-24 bg-cream rounded-xl flex items-center justify-center flex-shrink-0">
-                      <span className="text-4xl">🎂</span>
+<div className="w-24 h-24 bg-cream rounded-xl flex items-center justify-center flex-shrink-0 overflow-hidden">
+                       <img src={item.image} alt={item.name} className="w-full h-full object-cover" onError={(e) => { e.target.style.display = 'none'; }} />
                     </div>
                     <div className="flex-1">
                       <h3 className="font-display font-bold text-coffee text-lg mb-1">{item.name}</h3>

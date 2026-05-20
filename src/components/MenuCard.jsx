@@ -24,9 +24,8 @@ const MenuCard = ({ item, index = 0 }) => {
             src={item.image} 
             alt={item.name}
             className="w-full h-full object-cover"
-            onError={(e) => { e.currentTarget.style.opacity = '0'; }}
+            onError={(e) => { e.currentTarget.style.display = 'none'; }}
           />
-          <span className="text-4xl sm:text-5xl absolute">🎂</span>
         </div>
 
         <div className="p-3 sm:p-4 select-none">
