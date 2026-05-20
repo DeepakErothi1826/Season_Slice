@@ -19,30 +19,30 @@ const Home = () => {
       </Helmet>
 
       {/* Hero */}
-      <section className="relative min-h-[80vh] flex items-center pt-28 pb-16 overflow-hidden">
+      <section className="relative min-h-[60vh] sm:min-h-[70vh] flex items-center pt-20 sm:pt-28 pb-10 sm:pb-16 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-cream via-rose/5 to-gold/10" />
-        <div className="absolute top-20 right-20 w-96 h-96 bg-gold/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-10 w-[500px] h-[500px] bg-rose/10 rounded-full blur-3xl" />
+        <div className="absolute top-10 sm:top-20 right-10 sm:right-20 w-48 sm:w-72 h-48 sm:h-72 md:w-96 md:h-96 bg-gold/20 rounded-full blur-2xl sm:blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-48 sm:w-72 h-48 sm:h-72 md:w-[500px] md:h-[500px] bg-rose/10 rounded-full blur-2xl sm:blur-3xl" />
         
-        <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <p className="text-gold font-body text-sm tracking-widest uppercase mb-4 font-bold">Est. 2012 · Mumbai</p>
-            <h1 className="text-5xl sm:text-6xl lg:text-8xl font-display font-bold text-coffee leading-[1.1] mb-6">
+            <p className="text-gold font-body text-xs sm:text-sm tracking-widest uppercase mb-3 sm:mb-4 font-bold">Est. 2012 · Mumbai</p>
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-display font-bold text-coffee leading-[1.1] mb-4 sm:mb-6">
               Every Slice,<br /><span className="italic text-gold">A Masterpiece</span>
             </h1>
-            <p className="text-coffee-light/70 font-body text-base sm:text-lg max-w-2xl mx-auto leading-relaxed mb-10">
-              We believe in the art of baking — where passion meets precision, and every creation tells a story. Two new seasonal flavors every month, because life deserves something extraordinary.
+            <p className="text-coffee-light/70 font-body text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed mb-6 sm:mb-10 px-4">
+              We believe in the art of baking — where passion meets precision, and every creation tells a story.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link to="/menu" className="bg-gradient-to-r from-gold to-amber-400 text-coffee px-8 py-4 rounded-full text-sm uppercase tracking-wider hover:shadow-lg hover:scale-105 transition-all shadow-md font-bold inline-flex items-center gap-2">
-                View Menu <ArrowRight size={16} />
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+              <Link to="/menu" className="bg-gradient-to-r from-gold to-amber-400 text-coffee px-6 sm:px-8 py-3 sm:py-4 rounded-full text-xs sm:text-sm uppercase tracking-wider hover:shadow-lg hover:scale-105 transition-all shadow-md font-bold inline-flex items-center gap-2">
+                View Menu <ArrowRight size={14} sm:size={16} />
               </Link>
-              <Link to="/contact" className="bg-white text-coffee px-8 py-4 rounded-full text-sm uppercase tracking-wider hover:bg-cream transition-colors shadow-md border-2 border-coffee/10 font-bold inline-flex items-center gap-2">
+              <Link to="/contact" className="bg-white text-coffee px-6 sm:px-8 py-3 sm:py-4 rounded-full text-xs sm:text-sm uppercase tracking-wider hover:bg-cream transition-colors shadow-md border-2 border-coffee/10 font-bold inline-flex items-center gap-2">
                 Contact Us
               </Link>
             </div>
@@ -54,18 +54,18 @@ const Home = () => {
       <Marquee text="NEW FLAVORS EVERY MONTH" repeat={8} className="bg-gradient-to-r from-coffee via-coffee-light to-coffee py-4" textColor="text-cream" />
 
       {/* Categories */}
-      <section className="py-20 px-6 bg-gradient-to-b from-white to-cream-light">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-b from-white to-cream-light">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
             <p className="text-gold/80 text-xs uppercase tracking-[0.3em] mb-4 font-bold">Browse</p>
-            <h2 className="text-3xl sm:text-4xl font-display font-bold text-coffee">Our Categories</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-coffee">Our Categories</h2>
           </motion.div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
             {[
               { title: 'Cakes', desc: 'Fresh baked daily', image: '/category-cakes.jpg' },
               { title: 'Cold Brews', desc: 'Refreshing drinks', image: '/category-coldbrew.jpg' },
@@ -80,12 +80,12 @@ const Home = () => {
                 transition={{ delay: i * 0.1 }}
                 className="bg-white rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 cursor-pointer group border border-gray-100"
               >
-                <div className="aspect-square bg-gradient-to-br from-cream-light to-rose-50 flex items-center justify-center overflow-hidden">
-                  <img src={cat.image} alt={cat.title} className="w-full h-full object-cover" onError={(e) => { e.target.style.display = 'none'; e.target.parentElement.innerHTML = '<span class="text-6xl group-hover:scale-110 transition-transform duration-300">🎂</span>'; }} />
+                <div className="aspect-square sm:aspect-[4/3] md:aspect-square bg-gradient-to-br from-cream-light to-rose-50 flex items-center justify-center overflow-hidden">
+                  <img src={cat.image} alt={cat.title} className="w-full h-full object-cover" onError={(e) => { e.target.style.display = 'none'; e.target.parentElement.innerHTML = '<span class="text-4xl sm:text-5xl md:text-6xl group-hover:scale-110 transition-transform duration-300">🎂</span>'; }} />
                 </div>
-                <div className="p-4 text-center">
-                  <h3 className="font-display text-lg font-bold text-coffee mb-1">{cat.title}</h3>
-                  <p className="text-coffee-light/60 text-sm">{cat.desc}</p>
+                <div className="p-3 sm:p-4 text-center">
+                  <h3 className="font-display text-sm sm:text-base md:text-lg font-bold text-coffee mb-1">{cat.title}</h3>
+                  <p className="text-coffee-light/60 text-xs sm:text-sm">{cat.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -94,18 +94,18 @@ const Home = () => {
       </section>
 
       {/* Featured Products */}
-      <section className="py-20 px-6 bg-gradient-to-br from-cream-light via-white to-rose-50">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-br from-cream-light via-white to-rose-50">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
             <p className="text-gold/80 text-xs uppercase tracking-[0.3em] mb-4 font-bold">Best Sellers</p>
-            <h2 className="text-3xl sm:text-4xl font-display font-bold text-coffee">Popular Items</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-coffee">Popular Items</h2>
           </motion.div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
             {popular.slice(0, 8).map((item, i) => (
               <MenuCard key={item.id} item={item} index={i} />
             ))}
@@ -131,7 +131,7 @@ const Home = () => {
             <h2 className="text-3xl sm:text-4xl font-display font-bold text-coffee">Season Special</h2>
             <p className="text-coffee-light/60 mt-4 max-w-xl mx-auto">Fresh mango treats available this season!</p>
           </motion.div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
             {[
               { name: 'Regular Mango Cake', price: '400', emoji: '🥭' },
               { name: 'Bischof Mango', price: '500', emoji: '🍰' },
