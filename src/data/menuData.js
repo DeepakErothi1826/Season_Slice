@@ -1,5 +1,4 @@
 export const menuItems = [
-  // ─── CAKES ──────────────────────────────────────────
   {
     id: 1,
     name: 'Dark Chocolate Truffle',
@@ -92,8 +91,6 @@ export const menuItems = [
     popular: false,
     rating: 4.9,
   },
-
-  // ─── CHOCOLATE DESSERTS ──────────────────────────────────────────
   {
     id: 20,
     name: 'Chocolate Chips Pastry',
@@ -162,7 +159,6 @@ export const menuItems = [
     featured: true,
     rating: 4.9,
   },
-
   {
     id: 30,
     name: 'Mini Chocolate Classic',
@@ -197,7 +193,6 @@ export const menuItems = [
     featured: true,
     rating: 4.9,
   },
-
   {
     id: 40,
     name: 'Vintage Black Forest',
@@ -267,8 +262,6 @@ export const menuItems = [
     featured: true,
     rating: 4.9,
   },
-
-  // ─── PREMIUM FEEL ──────────────────────────────────────────
   {
     id: 50,
     name: 'Death By Chocolate',
@@ -365,8 +358,6 @@ export const menuItems = [
     featured: true,
     rating: 5.0,
   },
-
-  // ─── COOKIES ──────────────────────────────────────────
   {
     id: 60,
     name: 'Cookies Dark Mini Jar',
@@ -412,8 +403,6 @@ export const menuItems = [
     featured: true,
     rating: 4.9,
   },
-
-  // ─── COLD BREWS ──────────────────────────────────────────
   {
     id: 70,
     name: 'Iced Latte',
@@ -502,11 +491,6 @@ export const menuItems = [
     popular: true,
     rating: 4.9,
   },
-
-];
-
-// ─── MANGO DESSERT ──────────────────────────────────────────
-const mangoItems = [
   {
     id: 80,
     name: 'Regular Mango Pastry',
@@ -554,75 +538,6 @@ const mangoItems = [
     rating: 4.9,
   },
 ];
-
-const allMenuItems = [...menuItems, ...mangoItems];
-
-export { mangoItems };
-
-export const categories = [
-  { id: 'all', label: 'All Items' },
-  { id: 'cakes', label: 'Cakes' },
-  { id: 'chocolate', label: 'Chocolate Desserts' },
-  { id: 'premium', label: 'Premium Feel' },
-  { id: 'cookies', label: 'Cookies' },
-  { id: 'cold-brews', label: 'Cold Brews' },
-  { id: 'seasonal', label: 'Seasonal' },
-  { id: 'mango', label: 'Mango Dessert' },
-];
-
-// ─── MANGO DESSERT ──────────────────────────────────────────
-const mangoItems = [
-  {
-    id: 80,
-    name: 'Regular Mango Pastry',
-    description: 'Classic mango pastry with fresh cream and real mango pulp.',
-    price: 70,
-    category: 'mango',
-    image: '/images/mango/download.jfif',
-    seasonal: true,
-    popular: true,
-    rating: 4.7,
-  },
-  {
-    id: 81,
-    name: 'Mango Biscof',
-    description: 'Layered biscoff biscuits with mango cream and fresh mango slices.',
-    price: 90,
-    category: 'mango',
-    image: '/images/mango/No-Bake Mango Biscoff Cheesecake _ The Crumb Stories.jfif',
-    seasonal: true,
-    popular: true,
-    rating: 4.8,
-  },
-  {
-    id: 82,
-    name: 'Premium Alphonso Box',
-    description: 'Premium Alphonso mango box cake, rich and luxurious.',
-    price: 150,
-    category: 'mango',
-    image: '/images/mango/Mango Pudding Tart.jfif',
-    seasonal: true,
-    popular: true,
-    featured: true,
-    rating: 4.9,
-  },
-  {
-    id: 83,
-    name: 'Mango Pot',
-    description: 'Creamy mango dessert pot with layers of mango and cream.',
-    price: 199,
-    category: 'mango',
-    image: '/images/mango/No-Bake Mango Cheesecake Pots - TastyMealTime.jfif',
-    seasonal: true,
-    popular: true,
-    featured: true,
-    rating: 4.9,
-  },
-];
-
-const allMenuItems = [...menuItems, ...mangoItems];
-
-export { mangoItems };
 
 export const categories = [
   { id: 'all', label: 'All Items' },
