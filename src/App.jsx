@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/Navbar';
@@ -28,13 +28,27 @@ function AnimatedPage({ children }) {
 }
 
 function App() {
-  const [showSplash, setShowSplash] = useState(true);
+  const [showSplash, setShowSplash] = useState(false);
+  const [hasSeenSplash, setHasSeenSplash] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    const hasSeen = localStorage.getItem('seasonSliceSplash');
+    if (!hasSeen) {
+      setShowSplash(true);
+      setHasSeenSplash(true);
+    }
+  }, []);
+
+  const handleSplashComplete = () => {
+    setShowSplash(false);
+    localStorage.setItem('seasonSliceSplash', 'true');
+  };
 
   return (
     <div className="min-h-screen bg-cream font-body text-coffee">
       <AnimatePresence>
-        {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
+        {showSplash && <SplashScreen onComplete={handleSplashComplete} />}
       </AnimatePresence>
 
       {!showSplash && (
@@ -46,6 +60,7 @@ function App() {
             <AnimatePresence mode="wait">
               <Routes location={location} key={location.pathname}>
                 <Route path="/" element={<AnimatedPage><Home /></AnimatedPage>} />
+                <Route path="*" element={<AnimatedPage><Home /></AnimatedPage>} />
                 <Route path="/about" element={<AnimatedPage><About /></AnimatedPage>} />
                 <Route path="/menu" element={<AnimatedPage><MenuPage /></AnimatedPage>} />
                 <Route path="/contact" element={<AnimatedPage><Contact /></AnimatedPage>} />
