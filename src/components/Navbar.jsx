@@ -29,7 +29,7 @@ const Navbar = () => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
-        className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-100"
+        className="fixed top-0 left-0 right-0 z-[100] bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-100"
       >
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between h-20">
@@ -83,7 +83,7 @@ const Navbar = () => {
 
               <button
                 id="mobile-menu-button"
-                onClick={() => setMobileOpen(false)}
+                onClick={() => setMobileOpen(!mobileOpen)}
                 className="md:hidden p-2.5 rounded-full bg-gradient-to-r from-cream to-white text-coffee hover:from-cream-light transition-all duration-300 shadow-md border border-gray-100"
               >
                 {mobileOpen ? <X size={20} /> : <Menu size={20} />}
@@ -99,7 +99,7 @@ const Navbar = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 md:hidden"
+            className="fixed inset-0 z-[99] md:hidden"
           >
             <div className="absolute inset-0 bg-coffee/60 backdrop-blur-sm" onClick={() => setMobileOpen(false)} />
             <motion.div
@@ -107,9 +107,15 @@ const Navbar = () => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="absolute right-0 top-0 h-full w-72 bg-gradient-to-b from-white to-cream shadow-2xl"
+              className="absolute right-0 top-0 h-full w-64 sm:w-72 bg-white shadow-2xl overflow-y-auto"
             >
-              <div className="pt-24 px-6 space-y-2">
+              <div className="flex items-center justify-between p-4 border-b border-gray-100">
+                <h2 className="font-display text-lg font-bold text-coffee">Menu</h2>
+                <button onClick={() => setMobileOpen(false)} className="p-2 rounded-full hover:bg-cream">
+                  <X size={20} />
+                </button>
+              </div>
+              <div className="p-4 space-y-2">
                 {navLinks.map((link, i) => (
                   <motion.div
                     key={link.path}
@@ -119,10 +125,11 @@ const Navbar = () => {
                   >
                     <Link
                       to={link.path}
+                      onClick={() => setMobileOpen(false)}
                       className={`block px-4 py-3 rounded-xl text-base font-body font-medium transition-all duration-300 ${
                         location.pathname === link.path
-                          ? 'bg-gradient-to-r from-coffee to-coffee-light text-cream shadow-lg'
-                          : 'text-coffee hover:bg-gradient-to-r hover:from-cream-light hover:to-white border border-gray-100'
+                          ? 'bg-coffee text-cream shadow-lg'
+                          : 'text-coffee hover:bg-cream border border-gray-100'
                       }`}
                     >
                       {link.label}
