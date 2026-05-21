@@ -5,6 +5,10 @@ import useCartStore from '../store/cartStore';
 
 const CartPage = () => {
   const { items, removeItem, updateQuantity, clearCart } = useCartStore();
+
+  const handleCheckout = () => {
+    alert('Checkout feature coming soon! Your order total is ' + subtotal + ' Rs');
+  };
   const subtotal = items.reduce((t, i) => t + i.price * i.quantity, 0);
   const totalItems = items.reduce((t, i) => t + i.quantity, 0);
 
@@ -98,7 +102,7 @@ const CartPage = () => {
                     <span className="font-display text-2xl font-bold text-gold">{subtotal} Rs</span>
                   </div>
                 </div>
-                <button className="w-full bg-gold text-coffee font-display font-bold py-4 rounded-xl hover:bg-gold/90 transition-colors text-lg shadow-md">
+                <button onClick={handleCheckout} className="w-full bg-gold text-coffee font-display font-bold py-4 rounded-xl hover:bg-gold/90 transition-colors text-lg shadow-md">
                   Proceed to Checkout
                 </button>
                 <button onClick={clearCart} className="w-full text-center text-sm font-body text-cream/40 hover:text-cream/60 mt-4 transition-colors">

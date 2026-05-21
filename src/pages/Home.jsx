@@ -67,27 +67,28 @@ const Home = () => {
           </motion.div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
             {[
-              { title: 'Cakes', desc: 'Fresh baked daily', image: '/category-cakes.jpg' },
-              { title: 'Cold Brews', desc: 'Refreshing drinks', image: '/category-coldbrew.jpg' },
-              { title: 'Cookies', desc: 'Sweet treats', image: '/category-cookies.jpg' },
-              { title: 'Seasonal', desc: 'Limited edition', image: '/category-seasonal.jpg' },
+              { title: 'Cakes', desc: 'Fresh baked daily', image: '/category-cakes.jpg', link: '/menu' },
+              { title: 'Cold Brews', desc: 'Refreshing drinks', image: '/category-coldbrew.jpg', link: '/menu' },
+              { title: 'Cookies', desc: 'Sweet treats', image: '/category-cookies.jpg', link: '/menu' },
+              { title: 'Seasonal', desc: 'Limited edition', image: '/category-seasonal.jpg', link: '/menu' },
             ].map((cat, i) => (
-              <motion.div
-                key={cat.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-white rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 cursor-pointer group border border-gray-100"
-              >
-                <div className="aspect-square sm:aspect-[4/3] md:aspect-square bg-gradient-to-br from-cream-light to-rose-50 flex items-center justify-center overflow-hidden">
-                  <img src={cat.image} alt={cat.title} className="w-full h-full object-cover" onError={(e) => { e.target.style.display = 'none'; }} />
-                </div>
-                <div className="p-3 sm:p-4 text-center">
-                  <h3 className="font-display text-sm sm:text-base md:text-lg font-bold text-coffee mb-1">{cat.title}</h3>
-                  <p className="text-coffee-light/60 text-xs sm:text-sm">{cat.desc}</p>
-                </div>
-              </motion.div>
+              <Link to={cat.link} key={cat.title}>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="bg-white rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 cursor-pointer group border border-gray-100"
+                >
+                  <div className="aspect-square sm:aspect-[4/3] md:aspect-square bg-gradient-to-br from-cream-light to-rose-50 flex items-center justify-center overflow-hidden">
+                    <img src={cat.image} alt={cat.title} className="w-full h-full object-cover" onError={(e) => { e.target.style.display = 'none'; }} />
+                  </div>
+                  <div className="p-3 sm:p-4 text-center">
+                    <h3 className="font-display text-sm sm:text-base md:text-lg font-bold text-coffee mb-1">{cat.title}</h3>
+                    <p className="text-coffee-light/60 text-xs sm:text-sm">{cat.desc}</p>
+                  </div>
+                </motion.div>
+              </Link>
             ))}
           </div>
         </div>

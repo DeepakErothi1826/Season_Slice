@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Star, ShoppingBag, Heart, Check } from 'lucide-react';
 import { menuItems } from '../data/menuData';
+import useCartStore from '../store/cartStore';
 
 const allItems = menuItems;
 
@@ -12,6 +13,7 @@ const ProductDetail = () => {
   const navigate = useNavigate();
   const [isLiked, setIsLiked] = useState(false);
   const [likeLoading, setLikeLoading] = useState(false);
+  const { addItem } = useCartStore();
   
   const item = allItems.find((i) => i.id === parseInt(id));
 
@@ -33,6 +35,7 @@ const ProductDetail = () => {
   }
 
   const handleAddToCart = () => {
+    addItem(item);
     navigate('/cart');
   };
 

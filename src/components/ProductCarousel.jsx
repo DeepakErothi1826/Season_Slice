@@ -47,10 +47,9 @@ const ProductCarousel = ({ items, title = null }) => {
             transition={{ delay: i * 0.08 }}
             className="snap-start flex-shrink-0 w-[260px] bg-cream rounded-xl overflow-hidden group hover:shadow-xl transition-shadow duration-500"
           >
-            <div className="relative h-40 bg-cream-dark/30 overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-rose/5 flex items-center justify-center">
-                <span className="text-4xl opacity-30">🎂</span>
-              </div>
+            <div className="relative h-40 bg-gradient-to-br from-gold/5 to-rose/5 overflow-hidden flex items-center justify-center">
+              <img src={item.image} alt={item.name} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+              <span className="absolute text-4xl opacity-30 pointer-events-none">🎂</span>
               {item.popular && (
                 <span className="absolute top-3 left-3 text-[9px] uppercase tracking-wider bg-gold/90 text-coffee px-2 py-1 rounded-full font-medium">Popular</span>
               )}
@@ -64,7 +63,7 @@ const ProductCarousel = ({ items, title = null }) => {
               <h3 className="font-display font-bold text-coffee text-base mb-1">{item.name}</h3>
               <p className="text-coffee-light/50 text-xs line-clamp-2 mb-4">{item.description}</p>
               <div className="flex items-center justify-between pt-3 border-t border-coffee/5">
-                <span className="font-display text-xl font-bold text-coffee/80">${item.price.toFixed(2)}</span>
+                <span className="font-display text-xl font-bold text-coffee/80">{item.price} Rs</span>
                 <button onClick={() => addItem(item)} className="flex items-center gap-1.5 bg-coffee text-cream px-4 py-2 rounded-full text-[10px] font-medium uppercase tracking-wider hover:bg-coffee-light transition-colors">
                   <ShoppingBag size={11} /> Add
                 </button>

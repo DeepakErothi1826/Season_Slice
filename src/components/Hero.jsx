@@ -1,10 +1,13 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+
+const MotionLink = motion(Link);
 
 const slides = [
   {
     headline: 'Savor the Changing Seasons.',
     subheadline: "Where nature's peak ingredients meet culinary precision.",
-    cta: { label: 'View Current Menu', href: '/menu' }
+    cta: { label: 'View Current Menu', to: '/menu' }
   }
 ];
 
@@ -102,8 +105,8 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
           >
-            <motion.a
-              href={slides[0].cta.href}
+            <MotionLink
+              to={slides[0].cta.to}
               className="inline-flex items-center gap-3 px-8 py-4 bg-white text-stone-900 rounded-full font-semibold text-base tracking-wide hover:bg-cream transition-all duration-300 hover:shadow-xl hover:shadow-white/10"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
@@ -112,7 +115,7 @@ const Hero = () => {
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </motion.a>
+            </MotionLink>
           </motion.div>
         )}
       </div>

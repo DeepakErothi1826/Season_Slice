@@ -1,9 +1,11 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Plus, Minus, Trash2, ShoppingBag } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import useCartStore from '../store/cartStore';
 
 const CartDrawer = () => {
   const { items, isOpen, closeCart, removeItem, updateQuantity, clearCart } = useCartStore();
+  const navigate = useNavigate();
   const subtotal = items.reduce((t, i) => t + i.price * i.quantity, 0);
   const totalItems = items.reduce((t, i) => t + i.quantity, 0);
 
@@ -41,7 +43,7 @@ const CartDrawer = () => {
                   </div>
                   <p className="font-display text-lg text-coffee-light">Your cart is empty</p>
                   <p className="text-sm text-coffee-light/60 font-body">Add some delicious items!</p>
-                  <button onClick={closeCart} className="btn-primary text-sm mt-2">Browse Menu</button>
+                  <button onClick={() => { closeCart(); navigate('/menu'); }} className="btn-primary text-sm mt-2">Browse Menu</button>
                 </div>
               ) : (
                 <AnimatePresence>
@@ -57,7 +59,7 @@ const CartDrawer = () => {
                       <img src={item.image} alt={item.name} className="w-20 h-20 rounded-lg object-cover" />
                       <div className="flex-1 min-w-0">
                         <h4 className="font-display font-semibold text-coffee text-sm truncate">{item.name}</h4>
-                        <p className="text-coffee-light/60 text-xs font-body mt-0.5">${item.price.toFixed(2)} each</p>
+                        <p className="text-coffee-light/60 text-xs font-body mt-0.5">{item.price} Rs each</p>
                         <div className="flex items-center justify-between mt-2">
                           <div className="flex items-center gap-2 bg-cream-dark rounded-full px-1 py-0.5">
                             <button onClick={() => updateQuantity(item.id, item.quantity - 1)} className="w-7 h-7 rounded-full flex items-center justify-center hover:bg-cream transition-colors text-coffee">
@@ -69,7 +71,7 @@ const CartDrawer = () => {
                             </button>
                           </div>
                           <div className="flex items-center gap-3">
-                            <span className="font-display font-bold text-coffee">${(item.price * item.quantity).toFixed(2)}</span>
+                            <span className="font-display font-bold text-coffee">{item.price * item.quantity} Rs</span>
                             <button onClick={() => removeItem(item.id)} className="p-1.5 rounded-full hover:bg-rose/20 text-rose transition-colors">
                               <Trash2 size={14} />
                             </button>
@@ -87,7 +89,7 @@ const CartDrawer = () => {
               <div className="border-t border-coffee/10 p-6 space-y-4 bg-cream-light">
                 <div className="space-y-2">
                   <div className="flex justify-between text-sm font-body text-coffee-light">
-                    <span>Subtotal</span><span>${subtotal.toFixed(2)}</span>
+                    <span>Subtotal</span><span>{subtotal} Rs</span>
                   </div>
                   <div className="flex justify-between text-sm font-body text-coffee-light">
                     <span>Delivery</span><span>Free</span>
@@ -95,10 +97,10 @@ const CartDrawer = () => {
                   <div className="h-px bg-coffee/10" />
                   <div className="flex justify-between">
                     <span className="font-display font-bold text-coffee text-lg">Total</span>
-                    <span className="font-display font-bold text-coffee text-lg">${subtotal.toFixed(2)}</span>
+                    <span className="font-display font-bold text-coffee text-lg">{subtotal} Rs</span>
                   </div>
                 </div>
-                <button className="btn-gold w-full text-center text-base" id="checkout-button">Proceed to Checkout</button>
+                <button onClick={() => { closeCart(); navigate('/cart'); }} className="btn-gold w-full text-center text-base" id="checkout-button">Proceed to Checkout</button>
                 <button onClick={clearCart} className="w-full text-center text-sm font-body text-coffee-light hover:text-rose transition-colors">Clear Cart</button>
               </div>
             )}
