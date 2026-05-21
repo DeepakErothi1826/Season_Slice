@@ -62,7 +62,7 @@ const SplashScreen = ({ onComplete }) => {
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
-            className="w-28 h-28 mx-auto"
+            className="w-56 h-56 mx-auto"
           >
             <svg viewBox="0 0 120 120" className="w-full h-full">
               <circle
@@ -84,7 +84,7 @@ const SplashScreen = ({ onComplete }) => {
               transition={{ delay: 0.3, duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
               src="/images/logo/Season Slice Logo.png"
               alt="Season Slice Logo"
-              className="w-20 h-20 object-contain"
+              className="w-48 h-48 object-contain"
               onError={(e) => {
                 e.target.style.display = 'none';
                 e.target.nextSibling.style.display = 'flex';
@@ -94,7 +94,7 @@ const SplashScreen = ({ onComplete }) => {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.3, duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
-              className="w-20 h-20 rounded-full bg-coffee flex items-center justify-center shadow-lg shadow-coffee/30"
+              className="w-48 h-48 rounded-full bg-coffee flex items-center justify-center shadow-lg shadow-coffee/30"
               style={{ display: 'none' }}
             >
               <span className="text-cream font-display font-bold text-3xl">S</span>
