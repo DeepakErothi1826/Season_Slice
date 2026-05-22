@@ -122,18 +122,29 @@ const About = () => {
               <h2 className="text-3xl sm:text-4xl font-display font-bold text-coffee">Milestones</h2>
             </div>
           </ScrollReveal>
-          <div className="space-y-4">
+          <div className="relative">
+            <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-gold/40 via-rose/30 to-blue/20 hidden md:block" />
             {timeline.map((item, i) => (
               <ScrollReveal key={item.year} delay={i * 0.1}>
-                <div className="flex items-center gap-6 bg-white rounded-2xl p-6 hover:shadow-xl transition-all border border-gray-100">
-                  <div className="relative w-24 h-24 rounded-2xl overflow-hidden flex-shrink-0 shadow-lg">
-                    <img src={item.image} alt="" className="w-full h-full object-cover" loading="lazy" />
-                    <div className={`absolute inset-0 ${item.color} opacity-60`} />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="font-display text-sm font-bold text-white text-center leading-tight px-1">{item.year}</span>
+                <div className="relative pl-0 md:pl-14 pb-10 last:pb-0 group">
+                  <div className="absolute left-3 md:left-5 top-6 w-3 h-3 rounded-full bg-white border-2 border-gold shadow-md hidden md:block z-10 group-hover:scale-150 transition-transform" />
+                  <div className="relative rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500">
+                    <div className="relative h-48 sm:h-52">
+                      <img src={item.image} alt="" className="w-full h-full object-cover" loading="lazy" onError={(e) => { e.target.style.display = 'none'; }} />
+                      <div className={`absolute inset-0 ${item.color} opacity-60 mix-blend-multiply`} />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                      <div className="absolute top-4 right-4">
+                        <span className="inline-block text-xs font-bold text-white uppercase tracking-widest bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/30">
+                          {item.year}
+                        </span>
+                      </div>
+                      <div className="absolute bottom-4 left-5 right-5">
+                        <p className="font-display text-xl sm:text-2xl font-bold text-white leading-tight drop-shadow-lg">
+                          {item.event}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                  <p className="font-body text-coffee text-lg font-medium">{item.event}</p>
                 </div>
               </ScrollReveal>
             ))}
