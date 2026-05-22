@@ -12,11 +12,11 @@ const values = [
 ];
 
 const timeline = [
-  { year: '2012', event: 'Season Slice opened its first bakery in Mumbai', color: 'bg-gradient-to-r from-gold to-amber-400' },
-  { year: '2015', event: 'Introduced seasonal flavor rotation concept', color: 'bg-gradient-to-r from-rose to-pink-400' },
-  { year: '2018', event: 'Expanded to serve 10,000+ happy customers', color: 'bg-gradient-to-r from-emerald to-teal-400' },
-  { year: '2020', event: 'Launched online ordering and delivery', color: 'bg-gradient-to-r from-purple to-violet-400' },
-  { year: '2024', event: 'Introduced 24 new flavors in a single year', color: 'bg-gradient-to-r from-blue to-indigo-400' },
+  { year: 'Jan 2026', event: 'Season Slice opened its first bakery in Mumbai', color: 'bg-gradient-to-r from-gold to-amber-400' },
+  { year: 'Feb 2026', event: 'Introduced seasonal flavor rotation concept', color: 'bg-gradient-to-r from-rose to-pink-400' },
+  { year: 'Mar 2026', event: 'Launched online ordering and delivery', color: 'bg-gradient-to-r from-emerald to-teal-400' },
+  { year: 'Apr 2026', event: 'Served 1,000+ happy customers', color: 'bg-gradient-to-r from-purple to-violet-400' },
+  { year: 'May 2026', event: 'Introduced 5 new flavors in our launch month', color: 'bg-gradient-to-r from-blue to-indigo-400' },
 ];
 
 const About = () => {
@@ -24,7 +24,7 @@ const About = () => {
     <>
        <Helmet>
          <title>About Season Slice Cafe | Our Story & Values</title>
-         <meta name="description" content="Learn about Season Slice Cafe's journey since 2012, our commitment to quality ingredients, and what makes us Mumbai's beloved bakery destination." />
+         <meta name="description" content="Learn about Season Slice Cafe's journey since 2026, our commitment to quality ingredients, and what makes us Mumbai's newest bakery destination." />
          <link rel="canonical" href="https://www.seasonslice.com/about" />
        </Helmet>
 
@@ -60,7 +60,7 @@ const About = () => {
                 <p className="text-gold/80 text-xs uppercase tracking-[0.3em] mb-4 font-bold">How We Started</p>
                 <h2 className="text-3xl sm:text-4xl font-display font-bold text-coffee mb-6">From a Small Kitchen to Your Heart</h2>
                 <p className="text-coffee-light/70 font-body leading-relaxed mb-4">
-                  Season Slice began in 2012 as a small family bakery in Mumbai. What started as a passion for baking has grown into a beloved destination for cake lovers.
+                   Season Slice began in 2026 as a fresh new bakery in Mumbai. What started as a passion for baking is quickly becoming a favorite destination for cake lovers.
                 </p>
                 <p className="text-coffee-light/70 font-body leading-relaxed">
                   Today, we serve thousands of customers who trust us for their celebrations, cravings, and everyday moments of sweetness.
@@ -71,9 +71,9 @@ const About = () => {
               <div className="bg-gradient-to-br from-cream to-white rounded-3xl p-8 shadow-xl border border-gray-100">
                 <div className="grid grid-cols-2 gap-6">
                   {[
-                    { num: '12+', label: 'Years', color: 'text-gold' },
-                    { num: '50K+', label: 'Customers', color: 'text-rose' },
-                    { num: '24+', label: 'Flavors', color: 'text-emerald' },
+                    { num: '2026', label: 'Born', color: 'text-gold' },
+                    { num: '1K+', label: 'Customers', color: 'text-rose' },
+                    { num: '5+', label: 'Flavors', color: 'text-emerald' },
                     { num: '100%', label: 'Fresh', color: 'text-blue' },
                   ].map((item, i) => (
                     <div key={i} className="text-center bg-white rounded-2xl p-4 shadow-md">

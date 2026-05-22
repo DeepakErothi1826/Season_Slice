@@ -32,7 +32,7 @@ const Home = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <p className="text-gold font-body text-xs sm:text-sm tracking-widest uppercase mb-3 sm:mb-4 font-bold">Est. 2012 · Mumbai</p>
+            <p className="text-gold font-body text-xs sm:text-sm tracking-widest uppercase mb-3 sm:mb-4 font-bold">Est. 2026 · Mumbai</p>
             <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-display font-bold text-coffee leading-[1.1] mb-4 sm:mb-6">
               Every Slice,<br /><span className="italic text-gold">A Masterpiece</span>
             </h1>
@@ -198,8 +198,8 @@ const Home = () => {
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { num: '24+', label: 'Flavors Yearly', color: 'text-gold' },
-              { num: '50K+', label: 'Happy Customers', color: 'text-rose' },
+              { num: '5+', label: 'Flavors', color: 'text-gold' },
+              { num: '1K+', label: 'Happy Customers', color: 'text-rose' },
               { num: '12', label: 'Years of Craft', color: 'text-emerald' },
               { num: '100%', label: 'Fresh Daily', color: 'text-amber' },
             ].map((stat, i) => (
