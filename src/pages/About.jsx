@@ -22,10 +22,11 @@ const timeline = [
 const About = () => {
   return (
     <>
-      <Helmet>
-        <title>About — Season Slice</title>
-        <meta name="description" content="The story behind Season Slice — 12 months, 24 new reasons to visit." />
-      </Helmet>
+       <Helmet>
+         <title>About Season Slice Cafe | Our Story & Values</title>
+         <meta name="description" content="Learn about Season Slice Cafe's journey since 2012, our commitment to quality ingredients, and what makes us Mumbai's beloved bakery destination." />
+         <link rel="canonical" href="https://www.seasonslice.com/about" />
+       </Helmet>
 
       {/* Hero */}
       <section className="relative min-h-[70vh] flex items-center pt-28 pb-16 overflow-hidden">

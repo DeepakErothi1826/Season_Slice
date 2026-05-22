@@ -36,10 +36,64 @@ const Contact = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Contact — Season Slice</title>
-        <meta name="description" content="Get in touch with Season Slice. Visit us, call us, or send a message." />
-      </Helmet>
+       <Helmet>
+         <title>Contact Season Slice Cafe | Visit Us in Chembur, Mumbai</title>
+         <meta name="description" content="Visit Season Slice Cafe at our Chembur location. Find our address, phone numbers, email, and opening hours. Get directions to our cozy cafe." />
+         {/* LocalBusiness Schema for Contact Page */}
+         <script type="application/ld+json">
+           {JSON.stringify({
+             "@context": "https://schema.org",
+             "@type": "LocalBusiness",
+             "name": "Season Slice Cafe",
+             "image": "https://www.seasonslice.com/assets/cake-blueberry.png",
+             "@id": "https://www.seasonslice.com/",
+             "url": "https://www.seasonslice.com/",
+             "telephone": "+91 70211 85010",
+             "priceRange": "$$",
+             "address": {
+               "@type": "PostalAddress",
+               "streetAddress": "The Baya Junction, Cross, Shop no 8 Pestom Sagar Rd Number 6",
+               "addressLocality": "Chembur West",
+               "addressRegion": "Maharashtra",
+               "postalCode": "400089",
+               "addressCountry": "IN"
+             },
+             "geo": {
+               "@type": "GeoCoordinates",
+               "latitude": 19.0760,
+               "longitude": 72.8777
+             },
+             "openingHoursSpecification": [
+               {
+                 "@type": "OpeningHoursSpecification",
+                 "dayOfWeek": [
+                   "Monday",
+                   "Tuesday",
+                   "Wednesday",
+                   "Thursday",
+                   "Friday",
+                   "Saturday"
+                 ],
+                 "opens": "09:00",
+                 "closes": "21:00"
+               },
+               {
+                 "@type": "OpeningHoursSpecification",
+                 "dayOfWeek": "Sunday",
+                 "opens": "10:00",
+                 "closes": "20:00"
+               }
+             ],
+             "menu": "https://www.seasonslice.com/menu",
+             "servesCuisine": [
+               "Coffee Shop",
+               "Bakery",
+               "Desserts",
+               "Breakfast & Brunch"
+             ]
+           })}
+         </script>
+       </Helmet>
 
       {/* Hero */}
       <section className="relative pt-28 pb-20 px-6 overflow-hidden">

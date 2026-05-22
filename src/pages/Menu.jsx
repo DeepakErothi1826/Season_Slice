@@ -17,10 +17,27 @@ const MenuPage = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Menu — Season Slice</title>
-        <meta name="description" content="Browse our full menu of artisan cakes and desserts." />
-      </Helmet>
+       <Helmet>
+         <title>Season Slice Cafe Menu | Artisan Cakes & Specialty Coffee</title>
+         <meta name="description" content="Explore Season Slice Cafe's full menu featuring handcrafted cakes, specialty coffee, breakfast items, and seasonal desserts." />
+         {/* Restaurant Schema for Menu Page */}
+         <script type="application/ld+json">
+           {JSON.stringify({
+             "@context": "https://schema.org",
+             "@type": "Restaurant",
+             "name": "Season Slice Cafe",
+             "image": "https://www.seasonslice.com/assets/cake-blueberry.png",
+             "menu": "https://www.seasonslice.com/menu",
+             "servesCuisine": [
+               "Coffee Shop",
+               "Bakery",
+               "Desserts",
+               "Breakfast & Brunch"
+             ],
+             "priceRange": "$$"
+           })}
+         </script>
+       </Helmet>
 
       {/* Header */}
       <section className="pt-20 sm:pt-28 pb-6 sm:pb-10 px-4 sm:px-6 relative overflow-hidden">

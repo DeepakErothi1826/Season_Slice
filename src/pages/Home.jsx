@@ -13,10 +13,11 @@ const Home = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Season Slice — Cake & Coffee | Home</title>
-        <meta name="description" content="Season Slice — Premium cakes and artisan coffee with seasonal flavors." />
-      </Helmet>
+       <Helmet>
+         <title>Season Slice Cafe | Premium Coffee & Cozy Cafe Experience</title>
+         <meta name="description" content="Visit Season Slice Cafe for handcrafted coffee, delicious desserts, breakfast specials, and a relaxing cafe atmosphere perfect for coffee lovers." />
+         <link rel="canonical" href="https://www.seasonslice.com/" />
+       </Helmet>
 
       {/* Hero */}
       <section className="relative min-h-[60vh] sm:min-h-[70vh] flex items-center pt-20 sm:pt-28 pb-10 sm:pb-16 overflow-hidden">
@@ -66,12 +67,12 @@ const Home = () => {
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-coffee">Our Categories</h2>
           </motion.div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
-            {[
-              { title: 'Cakes', desc: 'Fresh baked daily', image: '/category-cakes.jpg', link: '/menu' },
-              { title: 'Cold Brews', desc: 'Refreshing drinks', image: '/category-coldbrew.jpg', link: '/menu' },
-              { title: 'Cookies', desc: 'Sweet treats', image: '/category-cookies.jpg', link: '/menu' },
-              { title: 'Seasonal', desc: 'Limited edition', image: '/category-seasonal.jpg', link: '/menu' },
-            ].map((cat, i) => (
+             {[
+               { title: 'Cakes', desc: 'Fresh baked daily', image: '/images/cakes/27 Fantastic Summer Cake Ideas.jfif', link: '/menu' },
+               { title: 'Cold Brews', desc: 'Refreshing drinks', image: '/images/cold-brews/Iced Vanilla Latte at Home ☕✨.jfif', link: '/menu' },
+               { title: 'Cookies', desc: 'Sweet treats', image: '/images/chocolate/Kit Kat cake.jfif', link: '/menu' },
+               { title: 'Seasonal', desc: 'Limited edition', image: '/images/mango/Mango Pudding Tart.jfif', link: '/menu' },
+             ].map((cat, i) => (
               <Link to={cat.link} key={cat.title}>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -81,7 +82,7 @@ const Home = () => {
                   className="bg-white rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 cursor-pointer group border border-gray-100"
                 >
                   <div className="aspect-square sm:aspect-[4/3] md:aspect-square bg-gradient-to-br from-cream-light to-rose-50 flex items-center justify-center overflow-hidden">
-                    <img src={cat.image} alt={cat.title} className="w-full h-full object-cover" onError={(e) => { e.target.style.display = 'none'; }} />
+                     <img src={cat.image} alt={cat.title} className="w-full h-full object-cover" loading="lazy" onError={(e) => { e.target.style.display = 'none'; }} />
                   </div>
                   <div className="p-3 sm:p-4 text-center">
                     <h3 className="font-display text-sm sm:text-base md:text-lg font-bold text-coffee mb-1">{cat.title}</h3>

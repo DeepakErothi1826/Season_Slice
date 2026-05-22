@@ -20,12 +20,13 @@ const MenuCard = ({ item, index = 0 }) => {
 
       <Link to={`/product/${item.id}`} className="block">
         <div className="relative h-32 sm:h-36 md:h-40 bg-gradient-to-br from-cream-light to-rose-50 overflow-hidden flex items-center justify-center">
-          <img 
-            src={item.image} 
-            alt={item.name}
-            className="w-full h-full object-cover"
-            onError={(e) => { e.currentTarget.style.display = 'none'; }}
-          />
+           <img 
+             src={item.image} 
+             alt={item.name}
+             className="w-full h-full object-cover"
+             loading="lazy"
+             onError={(e) => { e.currentTarget.style.display = 'none'; }}
+           />
         </div>
 
         <div className="p-3 sm:p-4 select-none">

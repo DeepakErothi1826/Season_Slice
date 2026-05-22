@@ -43,10 +43,32 @@ const ProductDetail = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{item.name} — Season Slice</title>
-        <meta name="description" content={item.description} />
-      </Helmet>
+       <Helmet>
+         <title>{item.name} | Season Slice Cafe</title>
+         <meta name="description" content={`Discover ${item.name} at Season Slice Cafe - ${item.description}`} />
+         {/* Product Schema for Product Detail Page */}
+         <script type="application/ld+json">
+           {JSON.stringify({
+             "@context": "https://schema.org",
+             "@type": "Product",
+             "name": item.name,
+             "image": item.image,
+             "description": item.description,
+             "brand": {
+               "@type": "Brand",
+               "name": "Season Slice Cafe"
+             },
+             "offers": {
+               "@type": "Offer",
+               "url": `https://www.seasonslice.com/product/${item.id}`,
+               "priceCurrency": "INR",
+               "price": item.price.replace(' Rs', ''),
+               "itemCondition": "https://schema.org/NewCondition",
+               "availability": "https://schema.org/InStock"
+             }
+           })}
+         </script>
+       </Helmet>
 
       <section className="pt-28 pb-20 px-6 bg-gradient-to-b from-white via-cream-light to-white">
         <div className="max-w-6xl mx-auto">
@@ -63,9 +85,9 @@ const ProductDetail = () => {
               className="relative"
             >
               <div className="bg-gradient-to-br from-cream-light via-rose-50 to-gold/20 rounded-3xl p-12 flex items-center justify-center shadow-2xl border border-gold/10">
-                <div className="w-full aspect-square bg-white rounded-2xl shadow-lg flex items-center justify-center border-2 border-gray-100 overflow-hidden">
-                  <img src={item.image} alt={item.name} className="w-full h-full object-cover" onError={(e) => { e.target.style.display = 'none'; }} />
-                </div>
+                 <div className="w-full aspect-square bg-white rounded-2xl shadow-lg flex items-center justify-center border-2 border-gray-100 overflow-hidden">
+                   <img src={item.image} alt={item.name} className="w-full h-full object-cover" loading="lazy" onError={(e) => { e.target.style.display = 'none'; }} />
+                 </div>
               </div>
               {item.seasonal && (
                 <div className="absolute top-6 left-6 bg-gradient-to-r from-gold to-amber-400 text-coffee px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg">
