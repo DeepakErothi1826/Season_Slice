@@ -70,7 +70,7 @@ const Home = () => {
              {[
                { title: 'Cakes', desc: 'Fresh baked daily', image: '/images/cakes/27 Fantastic Summer Cake Ideas.jfif', link: '/menu' },
                { title: 'Cold Brews', desc: 'Refreshing drinks', image: '/images/cold-brews/download.jfif', link: '/menu' },
-               { title: 'Cookies', desc: 'Sweet treats', image: '/images/chocolate/Kit Kat cake.jfif', link: '/menu' },
+               { title: 'Cookies', desc: 'Sweet treats', image: '/images/chocolate/download.jfif', link: '/menu' },
                { title: 'Seasonal', desc: 'Limited edition', image: '/images/mango/download.jfif', link: '/menu' },
              ].map((cat, i) => (
               <Link to={cat.link} key={cat.title}>
