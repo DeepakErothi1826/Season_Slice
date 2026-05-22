@@ -62,7 +62,7 @@ const ProductDetail = () => {
                "@type": "Offer",
                "url": `https://www.seasonslice.com/product/${item.id}`,
                "priceCurrency": "INR",
-               "price": item.price.replace(' Rs', ''),
+                "price": item.price,
                "itemCondition": "https://schema.org/NewCondition",
                "availability": "https://schema.org/InStock"
              }

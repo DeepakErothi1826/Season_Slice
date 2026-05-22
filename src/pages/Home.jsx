@@ -135,20 +135,21 @@ const Home = () => {
           </motion.div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
             {menuItems.filter(i => i.seasonal || i.category === 'mango').slice(0, 4).map((item, index) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-gradient-to-br from-white to-amber-50 rounded-2xl p-6 text-center hover:shadow-xl transition-all border border-amber-100"
-              >
-                <div className="w-20 h-20 bg-gradient-to-br from-gold/20 to-amber-200 rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden">
-                  <img src={item.image} alt={item.name} className="w-full h-full object-cover" onError={(e) => { e.target.style.display = 'none'; }} />
-                </div>
-                <h3 className="font-display text-base font-bold text-coffee mb-2">{item.name}</h3>
-                <span className="font-display text-2xl text-gradient font-bold bg-gradient-to-r from-gold to-amber-500 bg-clip-text">{item.price} Rs</span>
-              </motion.div>
+              <Link to={`/product/${item.id}`} key={item.id}>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-gradient-to-br from-white to-amber-50 rounded-2xl p-6 text-center hover:shadow-xl transition-all border border-amber-100"
+                >
+                  <div className="w-20 h-20 bg-gradient-to-br from-gold/20 to-amber-200 rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden">
+                    <img src={item.image} alt={item.name} className="w-full h-full object-cover" onError={(e) => { e.target.style.display = 'none'; }} />
+                  </div>
+                  <h3 className="font-display text-base font-bold text-coffee mb-2">{item.name}</h3>
+                  <span className="font-display text-2xl text-gradient font-bold bg-gradient-to-r from-gold to-amber-500 bg-clip-text">{item.price} Rs</span>
+                </motion.div>
+              </Link>
             ))}
           </div>
         </div>
