@@ -69,9 +69,9 @@ const Home = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
              {[
                { title: 'Cakes', desc: 'Fresh baked daily', image: '/images/cakes/27 Fantastic Summer Cake Ideas.jfif', link: '/menu' },
-               { title: 'Cold Brews', desc: 'Refreshing drinks', image: '/images/cold-brews/Iced Vanilla Latte at Home ☕✨.jfif', link: '/menu' },
+               { title: 'Cold Brews', desc: 'Refreshing drinks', image: '/images/cold-brews/download.jfif', link: '/menu' },
                { title: 'Cookies', desc: 'Sweet treats', image: '/images/chocolate/Kit Kat cake.jfif', link: '/menu' },
-               { title: 'Seasonal', desc: 'Limited edition', image: '/images/mango/Mango Pudding Tart.jfif', link: '/menu' },
+               { title: 'Seasonal', desc: 'Limited edition', image: '/images/mango/download.jfif', link: '/menu' },
              ].map((cat, i) => (
               <Link to={cat.link} key={cat.title}>
                 <motion.div
