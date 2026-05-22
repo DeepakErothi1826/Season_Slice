@@ -1,31 +1,53 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
 
 const SplashScreen = ({ onComplete }) => {
   const [progress, setProgress] = useState(0);
+  const prefersReduced = usePrefersReducedMotion();
 
   useEffect(() => {
-    // Animate progress from 0 to 100
-    const duration = 2800;
+    const duration = 1200;
     const interval = 30;
     const steps = duration / interval;
     let step = 0;
 
     const timer = setInterval(() => {
       step++;
-      // Ease-out curve for progress
       const t = step / steps;
       const eased = 1 - Math.pow(1 - t, 3);
       setProgress(Math.round(eased * 100));
 
       if (step >= steps) {
         clearInterval(timer);
-        setTimeout(() => onComplete(), 400);
+        onComplete();
       }
     }, interval);
 
     return () => clearInterval(timer);
   }, [onComplete]);
+
+  if (prefersReduced) {
+    return (
+      <div className="fixed inset-0 bg-cream z-[100] flex items-center justify-center overflow-hidden">
+        <div className="text-center relative z-10">
+          <div className="relative mx-auto mb-8">
+            <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-gold/20 to-amber-200 flex items-center justify-center">
+              <img src="/images/logo/Season Slice Logo.webp" alt="Season Slice Logo" className="w-24 h-24 object-contain" />
+            </div>
+          </div>
+          <h1 className="font-display text-4xl sm:text-5xl font-bold text-coffee tracking-wide mb-2">Season Slice</h1>
+          <p className="text-coffee-light/60 text-xs tracking-[0.35em] uppercase font-body mb-8">Cake & Coffee</p>
+          <div className="mx-auto" style={{ width: 200 }}>
+            <div className="h-[2px] bg-coffee/10 rounded-full overflow-hidden">
+              <div className="h-full bg-gradient-to-r from-gold via-caramel to-gold rounded-full" style={{ width: `${progress}%` }} />
+            </div>
+            <p className="text-coffee-light/40 text-[10px] font-body mt-3 tracking-widest">{progress < 100 ? 'LOADING EXPERIENCE...' : 'WELCOME'}</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <motion.div
@@ -82,7 +104,7 @@ const SplashScreen = ({ onComplete }) => {
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
-              src="/images/logo/Season Slice Logo.png"
+              src="/images/logo/Season Slice Logo.webp"
               alt="Season Slice Logo"
               className="w-48 h-48 object-contain"
               onError={(e) => {

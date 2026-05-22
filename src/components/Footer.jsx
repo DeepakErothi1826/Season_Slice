@@ -1,9 +1,10 @@
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { Heart, MapPin, Mail, Phone } from 'lucide-react';
 import { contactInfo } from '../data/contactData';
 import logoImg from '../../images/logo/Season Slice Logo.png';
 
-const Footer = () => {
+const Footer = memo(() => {
   return (
     <footer className="bg-gradient-to-br from-coffee via-coffee to-coffee-light text-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-16">
@@ -11,7 +12,7 @@ const Footer = () => {
           <div className="space-y-4 text-center md:text-left">
             <div className="flex items-center gap-3 justify-center md:justify-start">
               <div className="w-12 sm:w-14 h-12 sm:h-14 rounded-full bg-white p-1 shadow-lg">
-                <img src={logoImg} alt="Season Slice" className="w-full h-full rounded-full object-contain" />
+                <img src={logoImg} alt="Season Slice" className="w-full h-full rounded-full object-contain" loading="lazy" />
               </div>
               <div>
                 <h3 className="font-display text-lg sm:text-xl font-bold text-cream">Season Slice</h3>
@@ -69,6 +70,6 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
+});
 
 export default Footer;
