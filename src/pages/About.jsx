@@ -12,11 +12,11 @@ const values = [
 ];
 
 const timeline = [
-  { year: 'Jan 2026', event: 'Season Slice opened its first bakery in Mumbai', color: 'bg-gradient-to-r from-gold to-amber-400' },
-  { year: 'Feb 2026', event: 'Introduced seasonal flavor rotation concept', color: 'bg-gradient-to-r from-rose to-pink-400' },
-  { year: 'Mar 2026', event: 'Launched online ordering and delivery', color: 'bg-gradient-to-r from-emerald to-teal-400' },
-  { year: 'Apr 2026', event: 'Served 1,000+ happy customers', color: 'bg-gradient-to-r from-purple to-violet-400' },
-  { year: 'May 2026', event: 'Introduced 5 new flavors in our launch month', color: 'bg-gradient-to-r from-blue to-indigo-400' },
+  { year: 'Jan - May 2026', event: 'Season Slice opened its first bakery in Mumbai', image: '/images/cakes/27%20Fantastic%20Summer%20Cake%20Ideas.jfif', color: 'bg-gradient-to-r from-gold to-amber-400' },
+  { year: 'Feb 2026', event: 'Introduced seasonal flavor rotation concept', image: '/images/cakes/Mango%20Palette%20Knife%20Art%20Cake.jfif', color: 'bg-gradient-to-r from-rose to-pink-400' },
+  { year: 'Mar 2026', event: 'Launched online ordering and delivery', image: '/images/cold-brews/Iced%20Vanilla%20Latte%20at%20Home%20%E2%98%95%E2%9C%A8.jfif', color: 'bg-gradient-to-r from-emerald to-teal-400' },
+  { year: 'Apr 2026', event: 'Served 1,000+ happy customers', image: '/images/cookies/download.jfif', color: 'bg-gradient-to-r from-purple to-violet-400' },
+  { year: 'May 2026', event: 'Introduced 5 new flavors this month', image: '/images/chocolate/download.jfif', color: 'bg-gradient-to-r from-blue to-indigo-400' },
 ];
 
 const About = () => {
@@ -126,8 +126,12 @@ const About = () => {
             {timeline.map((item, i) => (
               <ScrollReveal key={item.year} delay={i * 0.1}>
                 <div className="flex items-center gap-6 bg-white rounded-2xl p-6 hover:shadow-xl transition-all border border-gray-100">
-                  <div className={`w-20 h-20 ${item.color} rounded-full flex items-center justify-center flex-shrink-0 shadow-lg`}>
-                    <span className="font-display text-lg font-bold text-white">{item.year}</span>
+                  <div className="relative w-24 h-24 rounded-2xl overflow-hidden flex-shrink-0 shadow-lg">
+                    <img src={item.image} alt="" className="w-full h-full object-cover" loading="lazy" />
+                    <div className={`absolute inset-0 ${item.color} opacity-60`} />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="font-display text-sm font-bold text-white text-center leading-tight px-1">{item.year}</span>
+                    </div>
                   </div>
                   <p className="font-body text-coffee text-lg font-medium">{item.event}</p>
                 </div>
