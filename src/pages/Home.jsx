@@ -7,15 +7,9 @@ import Marquee from '../components/Marquee';
 import Newsletter from '../components/Newsletter';
 import MenuCard from '../components/MenuCard';
 import { menuItems } from '../data/menuData';
-import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
 
 const Home = () => {
   const popular = menuItems.filter((i) => i.popular);
-  const prefersReduced = usePrefersReducedMotion();
-
-  const Mdiv = prefersReduced ? 'div' : motion.div;
-  const Mh2 = prefersReduced ? 'h2' : motion.h2;
-  const Mp = prefersReduced ? 'p' : motion.p;
 
   return (
     <>
@@ -27,28 +21,16 @@ const Home = () => {
 
       {/* Hero */}
       <section className="relative min-h-[60vh] sm:min-h-[70vh] flex items-center pt-20 sm:pt-28 pb-10 sm:pb-16 overflow-hidden">
-        <picture>
-          <source srcSet="/images/cakes/27%20Fantastic%20Summer%20Cake%20Ideas.avif" type="image/avif" />
-          <source srcSet="/images/cakes/27%20Fantastic%20Summer%20Cake%20Ideas.webp" type="image/webp" />
-          <img
-            src="/images/cakes/27%20Fantastic%20Summer%20Cake%20Ideas.jfif"
-            alt=""
-            className="absolute inset-0 w-full h-full object-cover"
-            fetchpriority="high"
-          />
-        </picture>
-        <div className="absolute inset-0 bg-gradient-to-br from-cream/90 via-rose/40 to-gold/30" />
+        <div className="absolute inset-0 bg-gradient-to-br from-cream via-rose/5 to-gold/10" />
         <div className="absolute top-10 sm:top-20 right-10 sm:right-20 w-48 sm:w-72 h-48 sm:h-72 md:w-96 md:h-96 bg-gold/20 rounded-full blur-2xl sm:blur-3xl" />
         <div className="absolute bottom-0 left-0 w-48 sm:w-72 h-48 sm:h-72 md:w-[500px] md:h-[500px] bg-rose/10 rounded-full blur-2xl sm:blur-3xl" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 text-center">
-          <Mdiv
-            {...(prefersReduced ? {} : {
-              initial: { opacity: 0, y: 30 },
-              whileInView: { opacity: 1, y: 0 },
-              viewport: { once: true },
-              transition: { duration: 0.8 }
-            })}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
           >
             <p className="text-gold font-body text-xs sm:text-sm tracking-widest uppercase mb-3 sm:mb-4 font-bold">Est. 2012 · Mumbai</p>
             <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-display font-bold text-coffee leading-[1.1] mb-4 sm:mb-6">
@@ -65,7 +47,7 @@ const Home = () => {
                 Contact Us
               </Link>
             </div>
-          </Mdiv>
+          </motion.div>
         </div>
       </section>
 
@@ -75,7 +57,7 @@ const Home = () => {
       {/* Categories */}
       <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-b from-white to-cream-light">
         <div className="max-w-6xl mx-auto">
-          <Mdiv
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -83,16 +65,16 @@ const Home = () => {
           >
             <p className="text-gold/80 text-xs uppercase tracking-[0.3em] mb-4 font-bold">Browse</p>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-coffee">Our Categories</h2>
-          </Mdiv>
+          </motion.div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
              {[
-                { title: 'Cakes', desc: 'Fresh baked daily', image: '/images/cakes/27 Fantastic Summer Cake Ideas.webp', link: '/menu' },
-                { title: 'Cold Brews', desc: 'Refreshing drinks', image: '/images/cold-brews/download.webp', link: '/menu' },
-                { title: 'Cookies', desc: 'Sweet treats', image: '/images/chocolate/download.webp', link: '/menu' },
-                { title: 'Seasonal', desc: 'Limited edition', image: '/images/mango/download.webp', link: '/menu' },
+               { title: 'Cakes', desc: 'Fresh baked daily', image: '/images/cakes/27 Fantastic Summer Cake Ideas.jfif', link: '/menu' },
+               { title: 'Cold Brews', desc: 'Refreshing drinks', image: '/images/cold-brews/download.jfif', link: '/menu' },
+               { title: 'Cookies', desc: 'Sweet treats', image: '/images/chocolate/download.jfif', link: '/menu' },
+               { title: 'Seasonal', desc: 'Limited edition', image: '/images/mango/download.jfif', link: '/menu' },
              ].map((cat, i) => (
               <Link to={cat.link} key={cat.title}>
-                <Mdiv
+                <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -100,13 +82,13 @@ const Home = () => {
                   className="bg-white rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 cursor-pointer group border border-gray-100"
                 >
                   <div className="aspect-square sm:aspect-[4/3] md:aspect-square bg-gradient-to-br from-cream-light to-rose-50 flex items-center justify-center overflow-hidden">
-                     <img src={cat.image} alt={cat.title} className="w-full h-full object-cover" loading="lazy" decoding="async" onError={(e) => { e.target.style.display = 'none'; }} />
+                     <img src={cat.image} alt={cat.title} className="w-full h-full object-cover" loading="lazy" onError={(e) => { e.target.style.display = 'none'; }} />
                   </div>
                   <div className="p-3 sm:p-4 text-center">
                     <h3 className="font-display text-sm sm:text-base md:text-lg font-bold text-coffee mb-1">{cat.title}</h3>
                     <p className="text-coffee-light/60 text-xs sm:text-sm">{cat.desc}</p>
                   </div>
-                </Mdiv>
+                </motion.div>
               </Link>
             ))}
           </div>
@@ -116,7 +98,7 @@ const Home = () => {
       {/* Featured Products */}
       <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-br from-cream-light via-white to-rose-50">
         <div className="max-w-6xl mx-auto">
-          <Mdiv
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -124,7 +106,7 @@ const Home = () => {
           >
             <p className="text-gold/80 text-xs uppercase tracking-[0.3em] mb-4 font-bold">Best Sellers</p>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-coffee">Popular Items</h2>
-          </Mdiv>
+          </motion.div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
             {popular.slice(0, 8).map((item, i) => (
               <MenuCard key={item.id} item={item} index={i} />
@@ -141,7 +123,7 @@ const Home = () => {
       {/* Season Special */}
       <section className="py-20 px-6 bg-gradient-to-r from-amber-50 via-yellow-50 to-orange-50">
         <div className="max-w-6xl mx-auto">
-          <Mdiv
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -150,11 +132,11 @@ const Home = () => {
             <p className="text-gold/80 text-xs uppercase tracking-[0.3em] mb-4 font-bold">Limited Time</p>
             <h2 className="text-3xl sm:text-4xl font-display font-bold text-coffee">Season Special</h2>
             <p className="text-coffee-light/60 mt-4 max-w-xl mx-auto">Fresh mango treats available this season!</p>
-          </Mdiv>
+          </motion.div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
             {menuItems.filter(i => i.seasonal || i.category === 'mango').slice(0, 4).map((item, index) => (
               <Link to={`/product/${item.id}`} key={item.id}>
-                <Mdiv
+                <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -162,11 +144,11 @@ const Home = () => {
                   className="bg-gradient-to-br from-white to-amber-50 rounded-2xl p-6 text-center hover:shadow-xl transition-all border border-amber-100"
                 >
                   <div className="w-20 h-20 bg-gradient-to-br from-gold/20 to-amber-200 rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden">
-                    <img src={item.image} alt={item.name} className="w-full h-full object-cover" loading="lazy" decoding="async" onError={(e) => { e.target.style.display = 'none'; }} />
+                    <img src={item.image} alt={item.name} className="w-full h-full object-cover" onError={(e) => { e.target.style.display = 'none'; }} />
                   </div>
                   <h3 className="font-display text-base font-bold text-coffee mb-2">{item.name}</h3>
                   <span className="font-display text-2xl text-gradient font-bold bg-gradient-to-r from-gold to-amber-500 bg-clip-text">{item.price} Rs</span>
-                </Mdiv>
+                </motion.div>
               </Link>
             ))}
           </div>
@@ -179,7 +161,7 @@ const Home = () => {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold/10 rounded-full blur-[100px]" />
         </div>
         <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-          <Mh2
+          <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -188,8 +170,8 @@ const Home = () => {
           >
             Unmatched<br />
             <span className="italic text-gold">Freshness</span>
-          </Mh2>
-          <Mp
+          </motion.h2>
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -197,8 +179,8 @@ const Home = () => {
             className="font-body text-cream/50 text-base sm:text-lg max-w-xl mx-auto leading-relaxed mb-8"
           >
             Quality ingredients, master bakers, passion for perfection.
-          </Mp>
-          <Mdiv
+          </motion.p>
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -207,7 +189,7 @@ const Home = () => {
             <Link to="/about" className="inline-flex items-center gap-2 bg-gold text-coffee px-8 py-4 rounded-full font-display font-bold hover:bg-amber-400 transition-colors shadow-lg">
               Our Story <ArrowRight size={16} />
             </Link>
-          </Mdiv>
+          </motion.div>
         </div>
       </section>
 
@@ -221,7 +203,7 @@ const Home = () => {
               { num: '12', label: 'Years of Craft', color: 'text-emerald' },
               { num: '100%', label: 'Fresh Daily', color: 'text-amber' },
             ].map((stat, i) => (
-              <Mdiv
+              <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -231,7 +213,7 @@ const Home = () => {
               >
                 <p className={`font-display text-4xl sm:text-5xl font-bold ${stat.color} mb-2`}>{stat.num}</p>
                 <p className="font-body text-xs uppercase tracking-widest text-coffee-light/60">{stat.label}</p>
-              </Mdiv>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -240,7 +222,7 @@ const Home = () => {
       {/* Testimonials */}
       <section className="py-20 px-6 bg-gradient-to-b from-cream-light to-white">
         <div className="max-w-6xl mx-auto">
-          <Mdiv
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -248,14 +230,14 @@ const Home = () => {
           >
             <p className="text-gold/80 text-xs uppercase tracking-[0.3em] mb-4 font-bold">Reviews</p>
             <h2 className="text-3xl sm:text-4xl font-display font-bold text-coffee">What Customers Say</h2>
-          </Mdiv>
+          </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               { name: 'Priya S.', text: 'Best cake shop in Chembur! The mango cake is absolutely divine.', rating: 5, color: 'from-rose-400 to-pink-500' },
               { name: 'Rahul M.', text: 'Fresh, delicious, and beautifully decorated. Perfect for birthdays.', rating: 5, color: 'from-gold to-amber-500' },
               { name: 'Anita K.', text: 'The seasonal flavors are amazing. Every month there is something new.', rating: 5, color: 'from-emerald-400 to-teal-500' },
             ].map((review, i) => (
-              <Mdiv
+              <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -273,7 +255,7 @@ const Home = () => {
                 </div>
                 <p className="text-coffee-light/70 font-body mb-6 leading-relaxed text-center">"{review.text}"</p>
                 <p className="font-display font-bold text-coffee text-center">{review.name}</p>
-              </Mdiv>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -283,7 +265,7 @@ const Home = () => {
       <section className="py-24 bg-gradient-to-b from-coffee to-coffee-light">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <Mdiv
+            <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -310,8 +292,8 @@ const Home = () => {
                   <p className="font-body text-cream/70 text-sm">Mon-Sat: 9AM-9PM | Sun: 10AM-8PM</p>
                 </div>
               </div>
-            </Mdiv>
-            <Mdiv
+            </motion.div>
+            <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -320,7 +302,7 @@ const Home = () => {
               <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-gold/20 to-rose/20 flex items-center justify-center shadow-2xl border-2 border-gold/20">
                 <span className="text-8xl">🏪</span>
               </div>
-            </Mdiv>
+            </motion.div>
           </div>
         </div>
       </section>

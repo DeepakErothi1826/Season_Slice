@@ -1,9 +1,9 @@
-import { useState, useRef, memo, useCallback } from 'react';
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, ShoppingBag, Star } from 'lucide-react';
 import useCartStore from '../store/cartStore';
 
-const ProductCarousel = memo(({ items, title = null }) => {
+const ProductCarousel = ({ items, title = null }) => {
   const scrollRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -48,7 +48,7 @@ const ProductCarousel = memo(({ items, title = null }) => {
             className="snap-start flex-shrink-0 w-[260px] bg-cream rounded-xl overflow-hidden group hover:shadow-xl transition-shadow duration-500"
           >
             <div className="relative h-40 bg-gradient-to-br from-gold/5 to-rose/5 overflow-hidden flex items-center justify-center">
-               <img src={item.image} alt={item.name} className="w-full h-full object-cover" loading="lazy" decoding="async" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+               <img src={item.image} alt={item.name} className="w-full h-full object-cover" loading="lazy" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
               <span className="absolute text-4xl opacity-30 pointer-events-none">🎂</span>
               {item.popular && (
                 <span className="absolute top-3 left-3 text-[9px] uppercase tracking-wider bg-gold/90 text-coffee px-2 py-1 rounded-full font-medium">Popular</span>

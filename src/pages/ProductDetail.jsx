@@ -72,10 +72,10 @@ const ProductDetail = () => {
 
       <section className="pt-28 pb-20 px-6 bg-gradient-to-b from-white via-cream-light to-white">
         <div className="max-w-6xl mx-auto">
-              <button onClick={() => navigate('/menu')} aria-label="Back to menu" className="inline-flex items-center gap-2 bg-gradient-to-r from-gold/20 to-amber-100 text-coffee px-6 py-3 rounded-full hover:from-gold/30 hover:to-amber-200 transition-colors shadow-md mb-8 font-body text-sm font-medium border border-gold/20">
-                <ArrowLeft size={16} />
-                Back to Menu
-              </button>
+          <button onClick={() => navigate('/menu')} className="inline-flex items-center gap-2 bg-gradient-to-r from-gold/20 to-amber-100 text-coffee px-6 py-3 rounded-full hover:from-gold/30 hover:to-amber-200 transition-colors shadow-md mb-8 font-body text-sm font-medium border border-gold/20">
+            <ArrowLeft size={16} />
+            Back to Menu
+          </button>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <motion.div
