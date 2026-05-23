@@ -120,6 +120,109 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Cakes Section */}
+      <section className="py-20 px-6 bg-gradient-to-br from-cream via-white to-amber-50">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <p className="text-gold/80 text-xs uppercase tracking-[0.3em] mb-4 font-bold">Baked Fresh Daily</p>
+              <h2 className="text-3xl sm:text-4xl font-display font-bold text-coffee mb-6">
+                Every Cake Tells a Story
+              </h2>
+              <p className="text-coffee-light/70 font-body leading-relaxed mb-4">
+                From classic chocolate to seasonal specials, every cake at Season Slice is handcrafted with premium ingredients and a whole lot of love. Our bakers arrive before sunrise to ensure each layer is perfectly baked, every cream is silky smooth, and every decoration is a work of art.
+              </p>
+              <p className="text-coffee-light/70 font-body leading-relaxed mb-6">
+                We source the finest Belgian chocolate, fresh fruits, and pure dairy to create cakes that taste as good as they look. Whether it's a birthday, anniversary, or just a Tuesday — we have the perfect slice waiting for you.
+              </p>
+              <Link to="/menu" className="inline-flex items-center gap-2 text-gold font-display font-bold hover:text-coffee transition-colors text-lg">
+                View All Cakes <ArrowRight size={18} />
+              </Link>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="grid grid-cols-2 gap-4"
+            >
+              <div className="aspect-square rounded-2xl bg-gradient-to-br from-gold/20 to-amber-200 overflow-hidden shadow-lg">
+                <img src="/images/cakes/27%20Fantastic%20Summer%20Cake%20Ideas.jfif" alt="Season Slice cake" className="w-full h-full object-cover" loading="lazy" />
+              </div>
+              <div className="aspect-square rounded-2xl bg-gradient-to-br from-rose/20 to-pink-200 overflow-hidden shadow-lg mt-8">
+                <img src="/images/cakes/Mango%20Heaven%20with%20Our%20Mango%20Cream%20Cake.jfif" alt="Mango cream cake" className="w-full h-full object-cover" loading="lazy" />
+              </div>
+              <div className="aspect-square rounded-2xl bg-gradient-to-br from-emerald/20 to-teal-200 overflow-hidden shadow-lg -mt-8">
+                <img src="/images/cakes/Salted%20Caramel%20Cake_%20A%20Sweet%20and%20Salty%20Celebration.jfif" alt="Salted caramel cake" className="w-full h-full object-cover" loading="lazy" />
+              </div>
+              <div className="aspect-square rounded-2xl bg-gradient-to-br from-blue/20 to-indigo-200 overflow-hidden shadow-lg">
+                <img src="/images/chocolate/BELGIAN%20CHOCOLATE%20CAK.jfif" alt="Belgian chocolate cake" className="w-full h-full object-cover" loading="lazy" />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Coffee Section */}
+      <section className="py-20 px-6 bg-gradient-to-br from-coffee via-coffee to-coffee-light relative overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.03]" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+        }} />
+        <div className="max-w-6xl mx-auto relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="order-2 md:order-1"
+            >
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border-2 border-white/10">
+                <img src="/images/cold-brews/Classic%20Caramel%20Frappe%20with%20Extra%20Drizzle.jfif" alt="Handcrafted coffee" className="w-full h-full object-cover" loading="lazy" />
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="order-1 md:order-2"
+            >
+              <p className="text-gold/80 text-xs uppercase tracking-[0.3em] mb-4 font-bold">Handcrafted Coffee</p>
+              <h2 className="text-3xl sm:text-4xl font-display font-bold text-cream mb-6">
+                The Perfect Brew Awaits
+              </h2>
+              <p className="text-cream/60 font-body leading-relaxed mb-4">
+                Great coffee starts with great beans. We source single-origin coffee beans and roast them in small batches to capture the perfect flavor profile. From rich espresso shots to creamy lattes and refreshing cold brews — every cup is made to order by our skilled baristas.
+              </p>
+              <p className="text-cream/60 font-body leading-relaxed mb-6">
+                Pair your favorite brew with a slice of cake for the ultimate experience. Our coffee menu is crafted to complement our desserts, creating flavor combinations that will keep you coming back for more.
+              </p>
+              <div className="grid grid-cols-3 gap-4 mb-8">
+                {[
+                  { label: 'Espresso', icon: Coffee },
+                  { label: 'Cold Brew', icon: Coffee },
+                  { label: 'Latte', icon: Coffee },
+                ].map((item, i) => (
+                  <div key={i} className="text-center bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/10">
+                    <item.icon size={24} className="text-gold mx-auto mb-2" />
+                    <p className="text-cream/80 text-sm font-medium">{item.label}</p>
+                  </div>
+                ))}
+              </div>
+              <Link to="/menu" className="inline-flex items-center gap-2 text-gold font-display font-bold hover:text-amber-300 transition-colors text-lg">
+                View Coffee Menu <ArrowRight size={18} />
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Season Special */}
       <section className="py-20 px-6 bg-gradient-to-r from-amber-50 via-yellow-50 to-orange-50">
         <div className="max-w-6xl mx-auto">
