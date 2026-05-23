@@ -1,16 +1,5 @@
 export const menuItems = [
   {
-    id: 1,
-    name: 'Dark Chocolate Truffle',
-    description: 'Rich Belgian chocolate layers with silky ganache and gold leaf finish.',
-    price: 6.99,
-    category: 'cakes',
-    image: '/images/cakes/27 Fantastic Summer Cake Ideas.jfif',
-    seasonal: false,
-    popular: true,
-    rating: 4.9,
-  },
-  {
     id: 6,
     name: 'Pistachio Dream',
     description: 'Creamy pistachio cake with roasted nuts and subtle rosewater notes.',
