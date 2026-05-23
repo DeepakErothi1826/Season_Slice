@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Plus, Minus, Trash2, ShoppingBag, ArrowLeft } from 'lucide-react';
@@ -13,6 +14,22 @@ const CartPage = () => {
   const totalItems = items.reduce((t, i) => t + i.quantity, 0);
 
   return (
+    <>
+      <Helmet>
+        <title>Shopping Cart | Season Slice Cafe</title>
+        <meta name="description" content="Review your cart at Season Slice Cafe. Handcrafted cakes, coffee, and desserts ready for checkout." />
+        <link rel="canonical" href="https://www.seasonslice.com/cart" />
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.seasonslice.com/" },
+                { "@type": "ListItem", "position": 2, "name": "Cart", "item": "https://www.seasonslice.com/cart" }
+              ]
+            })}
+          </script>
+      </Helmet>
     <div className="min-h-screen pt-28 pb-20 px-6">
       <div className="max-w-4xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
@@ -114,6 +131,7 @@ const CartPage = () => {
         </motion.div>
       </div>
     </div>
+    </>
   );
 };
 

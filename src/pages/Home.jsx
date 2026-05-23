@@ -14,10 +14,51 @@ const Home = () => {
   return (
     <>
        <Helmet>
-         <title>Season Slice Cafe | Premium Coffee & Cozy Cafe Experience</title>
-         <meta name="description" content="Visit Season Slice Cafe for handcrafted coffee, delicious desserts, breakfast specials, and a relaxing cafe atmosphere perfect for coffee lovers." />
-         <link rel="canonical" href="https://www.seasonslice.com/" />
-       </Helmet>
+          <title>Season Slice Cafe | Premium Coffee & Cozy Cafe Experience</title>
+          <meta name="description" content="Visit Season Slice Cafe for handcrafted coffee, delicious desserts, breakfast specials, and a relaxing cafe atmosphere perfect for coffee lovers." />
+          <link rel="canonical" href="https://www.seasonslice.com/" />
+          {/* BreadcrumbList Schema */}
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.seasonslice.com/" }
+              ]
+            })}
+          </script>
+          {/* Review Schema */}
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Review",
+              "itemReviewed": { "@type": "LocalBusiness", "name": "Season Slice Cafe" },
+              "author": { "@type": "Person", "name": "Priya S." },
+              "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+              "reviewBody": "Best cake shop in Chembur! The mango cake is absolutely divine."
+            })}
+          </script>
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Review",
+              "itemReviewed": { "@type": "LocalBusiness", "name": "Season Slice Cafe" },
+              "author": { "@type": "Person", "name": "Rahul M." },
+              "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+              "reviewBody": "Fresh, delicious, and beautifully decorated. Perfect for birthdays."
+            })}
+          </script>
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Review",
+              "itemReviewed": { "@type": "LocalBusiness", "name": "Season Slice Cafe" },
+              "author": { "@type": "Person", "name": "Anita K." },
+              "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+              "reviewBody": "The seasonal flavors are amazing. Every month there is something new."
+            })}
+          </script>
+        </Helmet>
 
       {/* Hero */}
       <section className="relative min-h-[60vh] sm:min-h-[70vh] flex items-center pt-20 sm:pt-28 pb-10 sm:pb-16 overflow-hidden">

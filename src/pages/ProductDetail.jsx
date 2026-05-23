@@ -44,9 +44,21 @@ const ProductDetail = () => {
   return (
     <>
        <Helmet>
-         <title>{item.name} | Season Slice Cafe</title>
-         <meta name="description" content={`Discover ${item.name} at Season Slice Cafe - ${item.description}`} />
-         {/* Product Schema for Product Detail Page */}
+          <title>{item.name} | Season Slice Cafe</title>
+          <meta name="description" content={`Discover ${item.name} at Season Slice Cafe - ${item.description}`} />
+          <link rel="canonical" href={`https://www.seasonslice.com/product/${item.id}`} />
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.seasonslice.com/" },
+                { "@type": "ListItem", "position": 2, "name": "Menu", "item": "https://www.seasonslice.com/menu" },
+                { "@type": "ListItem", "position": 3, "name": item.name, "item": `https://www.seasonslice.com/product/${item.id}` }
+              ]
+            })}
+          </script>
+          {/* Product Schema for Product Detail Page */}
          <script type="application/ld+json">
            {JSON.stringify({
              "@context": "https://schema.org",

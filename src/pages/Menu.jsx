@@ -17,10 +17,21 @@ const MenuPage = () => {
 
   return (
     <>
-       <Helmet>
-         <title>Season Slice Cafe Menu | Artisan Cakes & Specialty Coffee</title>
-         <meta name="description" content="Explore Season Slice Cafe's full menu featuring handcrafted cakes, specialty coffee, breakfast items, and seasonal desserts." />
-         {/* Restaurant Schema for Menu Page */}
+        <Helmet>
+          <title>Season Slice Cafe Menu | Artisan Cakes & Specialty Coffee</title>
+          <meta name="description" content="Explore Season Slice Cafe's full menu featuring handcrafted cakes, specialty coffee, breakfast items, and seasonal desserts." />
+          <link rel="canonical" href="https://www.seasonslice.com/menu" />
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.seasonslice.com/" },
+                { "@type": "ListItem", "position": 2, "name": "Menu", "item": "https://www.seasonslice.com/menu" }
+              ]
+            })}
+          </script>
+          {/* Restaurant Schema for Menu Page */}
          <script type="application/ld+json">
            {JSON.stringify({
              "@context": "https://schema.org",

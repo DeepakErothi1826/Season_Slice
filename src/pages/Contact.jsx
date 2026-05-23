@@ -36,10 +36,21 @@ const Contact = () => {
 
   return (
     <>
-       <Helmet>
-         <title>Contact Season Slice Cafe | Visit Us in Chembur, Mumbai</title>
-         <meta name="description" content="Visit Season Slice Cafe at our Chembur location. Find our address, phone numbers, email, and opening hours. Get directions to our cozy cafe." />
-         {/* LocalBusiness Schema for Contact Page */}
+        <Helmet>
+          <title>Contact Season Slice Cafe | Visit Us in Chembur, Mumbai</title>
+          <meta name="description" content="Visit Season Slice Cafe at our Chembur location. Find our address, phone numbers, email, and opening hours. Get directions to our cozy cafe." />
+          <link rel="canonical" href="https://www.seasonslice.com/contact" />
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.seasonslice.com/" },
+                { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://www.seasonslice.com/contact" }
+              ]
+            })}
+          </script>
+          {/* LocalBusiness Schema for Contact Page */}
          <script type="application/ld+json">
            {JSON.stringify({
              "@context": "https://schema.org",

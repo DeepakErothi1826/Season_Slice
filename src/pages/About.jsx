@@ -22,11 +22,33 @@ const timeline = [
 const About = () => {
   return (
     <>
-       <Helmet>
-         <title>About Season Slice Cafe | Our Story & Values</title>
-         <meta name="description" content="Learn about Season Slice Cafe's journey since 2026, our commitment to quality ingredients, and what makes us Mumbai's newest bakery destination." />
-         <link rel="canonical" href="https://www.seasonslice.com/about" />
-       </Helmet>
+        <Helmet>
+          <title>About Season Slice Cafe | Our Story & Values</title>
+          <meta name="description" content="Learn about Season Slice Cafe's journey since 2026, our commitment to quality ingredients, and what makes us Mumbai's newest bakery destination." />
+          <link rel="canonical" href="https://www.seasonslice.com/about" />
+          {/* BreadcrumbList Schema */}
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.seasonslice.com/" },
+                { "@type": "ListItem", "position": 2, "name": "About", "item": "https://www.seasonslice.com/about" }
+              ]
+            })}
+          </script>
+          {/* Article Schema */}
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Article",
+              "headline": "About Season Slice Cafe - Our Story & Values",
+              "description": "Learn about Season Slice Cafe's journey since 2026, our commitment to quality ingredients, and what makes us Mumbai's newest bakery destination.",
+              "author": { "@type": "Organization", "name": "Season Slice Cafe" },
+              "publisher": { "@type": "Organization", "name": "Season Slice Cafe" }
+            })}
+          </script>
+        </Helmet>
 
       {/* Hero */}
       <section className="relative min-h-[70vh] flex items-center pt-28 pb-16 overflow-hidden">
