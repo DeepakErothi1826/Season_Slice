@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import logoImg from '../../images/logo/Season Slice Logo.png';
 
 const SplashScreen = ({ onComplete }) => {
   const [progress, setProgress] = useState(0);
@@ -82,7 +83,7 @@ const SplashScreen = ({ onComplete }) => {
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
-              src="/images/logo/Season Slice Logo.png"
+              src={logoImg}
               alt="Season Slice Logo"
               className="w-48 h-48 object-contain"
               onError={(e) => {
