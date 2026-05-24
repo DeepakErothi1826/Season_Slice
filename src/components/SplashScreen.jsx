@@ -100,6 +100,24 @@ const SplashScreen = ({ onComplete }) => {
         </motion.svg>
       </div>
 
+      {/* Light shaded circles - left and right */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ backfaceVisibility: 'hidden' }}>
+        <motion.div
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 0.06 }}
+          transition={{ duration: 2, ease: 'easeOut', delay: 0.2 }}
+          className="absolute -left-20 top-1/3 w-[400px] h-[400px] bg-rose rounded-full"
+          style={{ willChange: 'transform, opacity' }}
+        />
+        <motion.div
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 0.05 }}
+          transition={{ duration: 2.5, ease: 'easeOut', delay: 0.4 }}
+          className="absolute -right-16 top-1/2 w-[350px] h-[350px] bg-coffee-light rounded-full"
+          style={{ willChange: 'transform, opacity' }}
+        />
+      </div>
+
       {/* Floating gold dust particles */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {[...Array(8)].map((_, i) => (
@@ -136,7 +154,7 @@ const SplashScreen = ({ onComplete }) => {
           <motion.div
             animate={{ rotate: -360 }}
             transition={{ duration: 6, repeat: Infinity, ease: 'linear' }}
-            className="absolute inset-0 w-56 h-56 mx-auto"
+            className="absolute inset-0 w-72 h-72 mx-auto"
             style={{ willChange: 'transform' }}
           >
             <svg viewBox="0 0 120 120" className="w-full h-full">
@@ -155,7 +173,7 @@ const SplashScreen = ({ onComplete }) => {
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
-            className="w-56 h-56 mx-auto"
+            className="w-72 h-72 mx-auto"
             style={{ willChange: 'transform' }}
           >
             <svg viewBox="0 0 120 120" className="w-full h-full">
@@ -184,7 +202,7 @@ const SplashScreen = ({ onComplete }) => {
               transition={{ delay: 0.3, type: 'spring', stiffness: 100, damping: 15 }}
               src={logoImg}
               alt="Season Slice"
-              className="w-44 h-44"
+              className="w-60 h-60"
               decoding="async"
               fetchpriority="high"
               style={{ willChange: 'transform' }}
