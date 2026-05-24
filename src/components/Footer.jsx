@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Heart, MapPin, Mail, Phone } from 'lucide-react';
 import { contactInfo } from '../data/contactData';
-import logoImg from '../../images/logo/Seasonslice_logo.png';
+import logoImg from '../../images/logo/Season Slice Logo.png';
 
 const Footer = () => {
   return (

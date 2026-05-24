@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShoppingBag, Menu, X } from 'lucide-react';
 import useCartStore from '../store/cartStore';
-import logoImg from '../../images/logo/Seasonslice_logo.png';
+import logoImg from '../../images/logo/Season Slice Logo.png';
 
 const navLinks = [
   { path: '/', label: 'Home' },
