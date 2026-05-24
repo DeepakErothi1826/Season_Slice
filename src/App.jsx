@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, lazy, Suspense } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/Navbar';
@@ -6,12 +6,13 @@ import CartDrawer from './components/CartDrawer';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import SplashScreen from './components/SplashScreen';
-import Home from './pages/Home';
-import About from './pages/About';
-import MenuPage from './pages/Menu';
-import Contact from './pages/Contact';
-import CartPage from './pages/Cart';
-import ProductDetail from './pages/ProductDetail';
+
+const Home = lazy(() => import('./pages/Home'));
+const About = lazy(() => import('./pages/About'));
+const MenuPage = lazy(() => import('./pages/Menu'));
+const Contact = lazy(() => import('./pages/Contact'));
+const CartPage = lazy(() => import('./pages/Cart'));
+const ProductDetail = lazy(() => import('./pages/ProductDetail'));
 
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
@@ -21,15 +22,23 @@ const pageVariants = {
 
 function AnimatedPage({ children }) {
   return (
-    <motion.div 
-      variants={pageVariants} 
-      initial="initial" 
-      animate="animate" 
+    <motion.div
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
       exit="exit"
       className="min-h-screen"
     >
       {children}
     </motion.div>
+  );
+}
+
+function PageLoader() {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-cream">
+      <div className="w-8 h-8 border-2 border-gold border-t-transparent rounded-full animate-spin" />
+    </div>
   );
 }
 
@@ -54,15 +63,17 @@ function App() {
           <CartDrawer />
           <main>
             <AnimatePresence mode="wait">
-              <Routes location={location} key={location.pathname}>
-                <Route path="/" element={<AnimatedPage><Home /></AnimatedPage>} />
-                <Route path="*" element={<AnimatedPage><Home /></AnimatedPage>} />
-                <Route path="/about" element={<AnimatedPage><About /></AnimatedPage>} />
-                <Route path="/menu" element={<AnimatedPage><MenuPage /></AnimatedPage>} />
-                <Route path="/contact" element={<AnimatedPage><Contact /></AnimatedPage>} />
-                <Route path="/cart" element={<AnimatedPage><CartPage /></AnimatedPage>} />
-                <Route path="/product/:id" element={<AnimatedPage><ProductDetail /></AnimatedPage>} />
-              </Routes>
+              <Suspense fallback={<PageLoader />}>
+                <Routes location={location} key={location.pathname}>
+                  <Route path="/" element={<AnimatedPage><Home /></AnimatedPage>} />
+                  <Route path="*" element={<AnimatedPage><Home /></AnimatedPage>} />
+                  <Route path="/about" element={<AnimatedPage><About /></AnimatedPage>} />
+                  <Route path="/menu" element={<AnimatedPage><MenuPage /></AnimatedPage>} />
+                  <Route path="/contact" element={<AnimatedPage><Contact /></AnimatedPage>} />
+                  <Route path="/cart" element={<AnimatedPage><CartPage /></AnimatedPage>} />
+                  <Route path="/product/:id" element={<AnimatedPage><ProductDetail /></AnimatedPage>} />
+                </Routes>
+              </Suspense>
             </AnimatePresence>
           </main>
           <Footer />

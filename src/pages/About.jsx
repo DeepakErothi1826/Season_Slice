@@ -12,11 +12,11 @@ const values = [
 ];
 
 const timeline = [
-  { year: 'Jan - May 2026', event: 'Season Slice opened its first bakery in Mumbai', image: '/images/cakes/27%20Fantastic%20Summer%20Cake%20Ideas.jfif', color: 'bg-gradient-to-r from-gold to-amber-400' },
-  { year: 'Feb 2026', event: 'Introduced seasonal flavor rotation concept', image: '/images/cakes/Mango%20Palette%20Knife%20Art%20Cake.jfif', color: 'bg-gradient-to-r from-rose to-pink-400' },
-  { year: 'Mar 2026', event: 'Launched online ordering and delivery', image: '/images/cold-brews/Iced%20Vanilla%20Latte%20at%20Home%20%E2%98%95%E2%9C%A8.jfif', color: 'bg-gradient-to-r from-emerald to-teal-400' },
-  { year: 'Apr 2026', event: 'Served 1,000+ happy customers', image: '/images/cookies/download.jfif', color: 'bg-gradient-to-r from-purple to-violet-400' },
-  { year: 'May 2026', event: 'Introduced 5 new flavors this month', image: '/images/chocolate/download.jfif', color: 'bg-gradient-to-r from-blue to-indigo-400' },
+  { year: 'Jan - May 2026', event: 'Season Slice opened its first bakery in Mumbai', image: '/images/cakes/27%20Fantastic%20Summer%20Cake%20Ideas.webp', color: 'bg-gradient-to-r from-gold to-amber-400' },
+  { year: 'Feb 2026', event: 'Introduced seasonal flavor rotation concept', image: '/images/cakes/Mango%20Palette%20Knife%20Art%20Cake.webp', color: 'bg-gradient-to-r from-rose to-pink-400' },
+  { year: 'Mar 2026', event: 'Launched online ordering and delivery', image: '/images/cold-brews/Iced%20Vanilla%20Latte%20at%20Home%20%E2%98%95%E2%9C%A8.webp', color: 'bg-gradient-to-r from-emerald to-teal-400' },
+  { year: 'Apr 2026', event: 'Served 1,000+ happy customers', image: '/images/cookies/download.webp', color: 'bg-gradient-to-r from-purple to-violet-400' },
+  { year: 'May 2026', event: 'Introduced 5 new flavors this month', image: '/images/chocolate/download.webp', color: 'bg-gradient-to-r from-blue to-indigo-400' },
 ];
 
 const About = () => {

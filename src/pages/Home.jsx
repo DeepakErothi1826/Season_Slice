@@ -109,10 +109,10 @@ const Home = () => {
           </motion.div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
              {[
-               { title: 'Cakes', desc: 'Fresh baked daily', image: '/images/cakes/27 Fantastic Summer Cake Ideas.jfif', link: '/menu' },
-               { title: 'Cold Brews', desc: 'Refreshing drinks', image: '/images/cold-brews/download.jfif', link: '/menu' },
-               { title: 'Cookies', desc: 'Sweet treats', image: '/images/chocolate/download.jfif', link: '/menu' },
-               { title: 'Seasonal', desc: 'Limited edition', image: '/images/mango/download.jfif', link: '/menu' },
+               { title: 'Cakes', desc: 'Fresh baked daily', image: '/images/cakes/27 Fantastic Summer Cake Ideas.webp', link: '/menu' },
+               { title: 'Cold Brews', desc: 'Refreshing drinks', image: '/images/cold-brews/download.webp', link: '/menu' },
+               { title: 'Cookies', desc: 'Sweet treats', image: '/images/chocolate/download.webp', link: '/menu' },
+               { title: 'Seasonal', desc: 'Limited edition', image: '/images/mango/download.webp', link: '/menu' },
              ].map((cat, i) => (
               <Link to={cat.link} key={cat.title}>
                 <motion.div
@@ -193,16 +193,16 @@ const Home = () => {
               className="grid grid-cols-2 gap-4"
             >
               <div className="aspect-square rounded-2xl bg-gradient-to-br from-gold/20 to-amber-200 overflow-hidden shadow-lg">
-                <img src="/images/cakes/27%20Fantastic%20Summer%20Cake%20Ideas.jfif" alt="Season Slice cake" className="w-full h-full object-cover" loading="lazy" />
+                <img src="/images/cakes/27%20Fantastic%20Summer%20Cake%20Ideas.webp" alt="Season Slice cake" className="w-full h-full object-cover" loading="lazy" />
               </div>
               <div className="aspect-square rounded-2xl bg-gradient-to-br from-rose/20 to-pink-200 overflow-hidden shadow-lg sm:mt-8">
-                <img src="/images/cakes/Mango%20Heaven%20with%20Our%20Mango%20Cream%20Cake.jfif" alt="Mango cream cake" className="w-full h-full object-cover" loading="lazy" />
+                <img src="/images/cakes/Mango%20Heaven%20with%20Our%20Mango%20Cream%20Cake.webp" alt="Mango cream cake" className="w-full h-full object-cover" loading="lazy" />
               </div>
               <div className="aspect-square rounded-2xl bg-gradient-to-br from-emerald/20 to-teal-200 overflow-hidden shadow-lg sm:-mt-8">
-                <img src="/images/cakes/Salted%20Caramel%20Cake_%20A%20Sweet%20and%20Salty%20Celebration.jfif" alt="Salted caramel cake" className="w-full h-full object-cover" loading="lazy" />
+                <img src="/images/cakes/Salted%20Caramel%20Cake_%20A%20Sweet%20and%20Salty%20Celebration.webp" alt="Salted caramel cake" className="w-full h-full object-cover" loading="lazy" />
               </div>
               <div className="aspect-square rounded-2xl bg-gradient-to-br from-blue/20 to-indigo-200 overflow-hidden shadow-lg">
-                <img src="/images/chocolate/BELGIAN%20CHOCOLATE%20CAK.jfif" alt="Belgian chocolate cake" className="w-full h-full object-cover" loading="lazy" />
+                <img src="/images/chocolate/BELGIAN%20CHOCOLATE%20CAK.webp" alt="Belgian chocolate cake" className="w-full h-full object-cover" loading="lazy" />
               </div>
             </motion.div>
           </div>
@@ -224,7 +224,7 @@ const Home = () => {
               className="order-2 md:order-1"
             >
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border-2 border-white/10">
-                <img src="/images/cold-brews/Classic%20Caramel%20Frappe%20with%20Extra%20Drizzle.jfif" alt="Handcrafted coffee" className="w-full h-full object-cover" loading="lazy" />
+                <img src="/images/cold-brews/Classic%20Caramel%20Frappe%20with%20Extra%20Drizzle.webp" alt="Handcrafted coffee" className="w-full h-full object-cover" loading="lazy" />
               </div>
             </motion.div>
             <motion.div

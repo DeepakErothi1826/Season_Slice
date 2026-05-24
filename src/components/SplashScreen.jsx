@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import logoImg from '../assets/Seasonslice_logo_small.png';
+import logoImg from '../assets/Seasonslice_logo_small.webp';
 
 const SplashScreen = ({ onComplete }) => {
   const progressValue = useMotionValue(0);
