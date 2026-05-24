@@ -3,7 +3,7 @@ import { categories } from '../data/menuData';
 
 const CategoryTabs = ({ active, onChange }) => {
   return (
-    <div className="flex items-center justify-center gap-3 flex-wrap">
+    <div className="flex items-center justify-start md:justify-center gap-3 overflow-x-auto flex-nowrap pb-2" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}>
       {categories.map((cat) => (
         <motion.button
           key={cat.id}

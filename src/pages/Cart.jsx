@@ -76,14 +76,14 @@ const CartPage = () => {
                         <div className="flex items-center gap-3 bg-cream rounded-full px-2 py-1">
                           <button
                             onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                            className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-coffee shadow-sm hover:bg-cream-light transition-colors"
+                            className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-coffee shadow-sm hover:bg-cream-light transition-colors"
                           >
                             <Minus size={14} />
                           </button>
                           <span className="text-sm font-body font-bold text-coffee w-6 text-center">{item.quantity}</span>
                           <button
                             onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                            className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-coffee shadow-sm hover:bg-cream-light transition-colors"
+                            className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-coffee shadow-sm hover:bg-cream-light transition-colors"
                           >
                             <Plus size={14} />
                           </button>

@@ -23,6 +23,11 @@ const Navbar = () => {
     setMobileOpen(false);
   }, [location]);
 
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileOpen]);
+
   return (
     <>
       <motion.nav
@@ -41,7 +46,7 @@ const Navbar = () => {
                   className="w-full h-full rounded-full object-contain bg-white"
                 />
               </div>
-              <div className="hidden sm:block">
+              <div>
                 <h1 className="font-display text-coffee text-lg font-bold leading-tight tracking-wide">
                   Season Slice
                 </h1>
@@ -84,7 +89,7 @@ const Navbar = () => {
               <button
                 id="mobile-menu-button"
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="md:hidden p-2.5 rounded-full bg-gradient-to-r from-cream to-white text-coffee hover:from-cream-light transition-all duration-300 shadow-md border border-gray-100"
+                className="md:hidden p-3 rounded-full bg-gradient-to-r from-cream to-white text-coffee hover:from-cream-light transition-all duration-300 shadow-md border border-gray-100"
               >
                 {mobileOpen ? <X size={20} /> : <Menu size={20} />}
               </button>
@@ -107,11 +112,12 @@ const Navbar = () => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              style={{ willChange: 'transform' }}
               className="absolute right-0 top-0 h-full w-64 sm:w-72 bg-white shadow-2xl overflow-y-auto"
             >
               <div className="flex items-center justify-between p-4 border-b border-gray-100">
                 <h2 className="font-display text-lg font-bold text-coffee">Menu</h2>
-                <button onClick={() => setMobileOpen(false)} className="p-2 rounded-full hover:bg-cream">
+                <button onClick={() => setMobileOpen(false)} className="p-3 rounded-full hover:bg-cream">
                   <X size={20} />
                 </button>
               </div>

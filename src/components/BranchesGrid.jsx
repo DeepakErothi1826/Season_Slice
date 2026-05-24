@@ -8,7 +8,7 @@ const BranchesGrid = () => {
       <div className="max-w-7xl mx-auto">
         <ScrollReveal>
           <div className="flex items-start gap-6 mb-12">
-            <h2 className="text-4xl sm:text-5xl font-display font-bold text-coffee [writing-mode:vertical-lr] rotate-180 tracking-wider">
+            <h2 className="text-xl sm:text-5xl font-display font-bold text-coffee sm:[writing-mode:vertical-lr] sm:rotate-180 tracking-wider">
               OUR BRANCHES
             </h2>
             <div className="flex-1">

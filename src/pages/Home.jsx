@@ -195,10 +195,10 @@ const Home = () => {
               <div className="aspect-square rounded-2xl bg-gradient-to-br from-gold/20 to-amber-200 overflow-hidden shadow-lg">
                 <img src="/images/cakes/27%20Fantastic%20Summer%20Cake%20Ideas.jfif" alt="Season Slice cake" className="w-full h-full object-cover" loading="lazy" />
               </div>
-              <div className="aspect-square rounded-2xl bg-gradient-to-br from-rose/20 to-pink-200 overflow-hidden shadow-lg mt-8">
+              <div className="aspect-square rounded-2xl bg-gradient-to-br from-rose/20 to-pink-200 overflow-hidden shadow-lg sm:mt-8">
                 <img src="/images/cakes/Mango%20Heaven%20with%20Our%20Mango%20Cream%20Cake.jfif" alt="Mango cream cake" className="w-full h-full object-cover" loading="lazy" />
               </div>
-              <div className="aspect-square rounded-2xl bg-gradient-to-br from-emerald/20 to-teal-200 overflow-hidden shadow-lg -mt-8">
+              <div className="aspect-square rounded-2xl bg-gradient-to-br from-emerald/20 to-teal-200 overflow-hidden shadow-lg sm:-mt-8">
                 <img src="/images/cakes/Salted%20Caramel%20Cake_%20A%20Sweet%20and%20Salty%20Celebration.jfif" alt="Salted caramel cake" className="w-full h-full object-cover" loading="lazy" />
               </div>
               <div className="aspect-square rounded-2xl bg-gradient-to-br from-blue/20 to-indigo-200 overflow-hidden shadow-lg">

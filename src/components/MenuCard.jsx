@@ -13,7 +13,7 @@ const MenuCard = ({ item, index = 0 }) => {
       className="group relative bg-white rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 border border-gray-100"
     >
       {item.seasonal && (
-        <div className="absolute top-2 left-2 z-10 bg-gradient-to-r from-gold to-amber-400 text-coffee px-2 py-1 rounded-full text-[9px] font-bold uppercase tracking-wider shadow-sm">
+        <div className="absolute top-2 left-2 z-10 bg-gradient-to-r from-gold to-amber-400 text-coffee px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider shadow-sm">
           Seasonal
         </div>
       )}
@@ -32,9 +32,9 @@ const MenuCard = ({ item, index = 0 }) => {
         <div className="p-3 sm:p-4 select-none">
           <div className="flex items-center gap-1 mb-1">
             {[...Array(5)].map((_, i) => (
-              <Star key={i} size={8} className={i < Math.floor(item.rating) ? 'fill-gold text-gold' : 'text-gray-300'} />
+              <Star key={i} size={12} className={i < Math.floor(item.rating) ? 'fill-gold text-gold' : 'text-gray-300'} />
             ))}
-            <span className="text-[9px] font-body text-coffee-light/50 ml-1">{item.rating}</span>
+            <span className="text-[10px] font-body text-coffee-light/50 ml-1">{item.rating}</span>
           </div>
 
           <h3 className="font-display font-bold text-coffee text-sm sm:text-base mb-1 leading-tight">{item.name}</h3>

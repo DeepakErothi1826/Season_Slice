@@ -146,7 +146,7 @@ const Contact = () => {
                   <card.icon size={22} className="text-gold" />
                 </div>
                 <h3 className="font-display font-bold text-coffee mb-2">{card.title}</h3>
-                <p className="text-coffee-light/60 text-sm whitespace-pre-line">{card.info}</p>
+                <p className="text-coffee-light/60 text-sm whitespace-pre-line break-words">{card.info}</p>
               </motion.div>
             ))}
           </div>

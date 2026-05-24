@@ -46,11 +46,11 @@ const Footer = () => {
             <ul className="space-y-2 sm:space-y-3">
               <li className="flex items-start md:items-center gap-3 text-sm font-body text-cream/60">
                 <MapPin size={16} className="flex-shrink-0 mt-0.5 md:mt-0 text-gold" />
-                <span className="text-xs sm:text-sm">{contactInfo.address}</span>
+                <span className="text-xs sm:text-sm break-words">{contactInfo.address}</span>
               </li>
               <li className="flex items-center gap-3 text-sm font-body text-cream/60">
                 <Mail size={16} className="flex-shrink-0 text-gold" />
-                <span className="text-xs sm:text-sm">{contactInfo.email}</span>
+                <span className="text-xs sm:text-sm break-all">{contactInfo.email}</span>
               </li>
               {contactInfo.phones.map((phone, i) => (
                 <li key={i} className="flex items-center gap-3 text-sm font-body text-cream/60">

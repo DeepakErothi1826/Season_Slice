@@ -28,10 +28,10 @@ const ProductCarousel = ({ items, title = null }) => {
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-2xl sm:text-3xl font-display font-bold text-coffee">{title}</h2>
           <div className="flex gap-2">
-            <button onClick={() => scroll(-1)} disabled={!canScrollLeft} className={`w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 ${canScrollLeft ? 'border border-coffee/20 text-coffee hover:bg-coffee hover:text-cream' : 'border border-coffee/10 text-coffee/30 cursor-not-allowed'}`}>
+            <button onClick={() => scroll(-1)} disabled={!canScrollLeft} className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 ${canScrollLeft ? 'border border-coffee/20 text-coffee hover:bg-coffee hover:text-cream' : 'border border-coffee/10 text-coffee/30 cursor-not-allowed'}`}>
               <ChevronLeft size={16} />
             </button>
-            <button onClick={() => scroll(1)} disabled={!canScrollRight} className={`w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 ${canScrollRight ? 'border border-coffee/20 text-coffee hover:bg-coffee hover:text-cream' : 'border border-coffee/10 text-coffee/30 cursor-not-allowed'}`}>
+            <button onClick={() => scroll(1)} disabled={!canScrollRight} className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 ${canScrollRight ? 'border border-coffee/20 text-coffee hover:bg-coffee hover:text-cream' : 'border border-coffee/10 text-coffee/30 cursor-not-allowed'}`}>
               <ChevronRight size={16} />
             </button>
           </div>
@@ -45,7 +45,7 @@ const ProductCarousel = ({ items, title = null }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: i * 0.08 }}
-            className="snap-start flex-shrink-0 w-[260px] bg-cream rounded-xl overflow-hidden group hover:shadow-xl transition-shadow duration-500"
+            className="snap-start flex-shrink-0 w-[220px] sm:w-[260px] bg-cream rounded-xl overflow-hidden group hover:shadow-xl transition-shadow duration-500"
           >
             <div className="relative h-40 bg-gradient-to-br from-gold/5 to-rose/5 overflow-hidden flex items-center justify-center">
                <img src={item.image} alt={item.name} className="w-full h-full object-cover" loading="lazy" onError={(e) => { e.currentTarget.style.display = 'none'; }} />

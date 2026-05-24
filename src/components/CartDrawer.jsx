@@ -29,7 +29,7 @@ const CartDrawer = () => {
                 <h2 className="font-display text-xl font-bold text-coffee">Your Cart</h2>
                 <span className="bg-gold text-coffee text-xs font-body font-bold px-2.5 py-0.5 rounded-full">{totalItems}</span>
               </div>
-              <button onClick={closeCart} className="p-2 rounded-full hover:bg-cream-dark transition-colors text-coffee" id="close-cart">
+              <button onClick={closeCart} className="p-3 rounded-full hover:bg-cream-dark transition-colors text-coffee" id="close-cart">
                 <X size={20} />
               </button>
             </div>
@@ -62,11 +62,11 @@ const CartDrawer = () => {
                         <p className="text-coffee-light/60 text-xs font-body mt-0.5">{item.price} Rs each</p>
                         <div className="flex items-center justify-between mt-2">
                           <div className="flex items-center gap-2 bg-cream-dark rounded-full px-1 py-0.5">
-                            <button onClick={() => updateQuantity(item.id, item.quantity - 1)} className="w-7 h-7 rounded-full flex items-center justify-center hover:bg-cream transition-colors text-coffee">
+                            <button onClick={() => updateQuantity(item.id, item.quantity - 1)} className="w-9 h-9 rounded-full flex items-center justify-center hover:bg-cream transition-colors text-coffee">
                               <Minus size={14} />
                             </button>
-                            <span className="text-sm font-body font-semibold text-coffee w-5 text-center">{item.quantity}</span>
-                            <button onClick={() => updateQuantity(item.id, item.quantity + 1)} className="w-7 h-7 rounded-full flex items-center justify-center hover:bg-cream transition-colors text-coffee">
+                            <span className="text-sm font-body font-semibold text-coffee w-6 text-center">{item.quantity}</span>
+                            <button onClick={() => updateQuantity(item.id, item.quantity + 1)} className="w-9 h-9 rounded-full flex items-center justify-center hover:bg-cream transition-colors text-coffee">
                               <Plus size={14} />
                             </button>
                           </div>

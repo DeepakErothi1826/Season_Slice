@@ -174,9 +174,9 @@ const About = () => {
             {/* Timeline items */}
             {timeline.map((item, i) => (
               <ScrollReveal key={item.year} delay={i * 0.1}>
-                <div className="relative pl-0 md:pl-14 pb-12 last:pb-0 group">
+                <div className="relative pl-6 md:pl-14 pb-12 last:pb-0 group border-l-2 md:border-l-0 border-gold/30">
                   {/* Timeline marker */}
-                  <div className="absolute left-3 md:left-5 top-6 w-10 h-10 rounded-full bg-gradient-to-br from-gold to-amber-500 flex items-center justify-center text-white font-bold text-sm shadow-md hidden md:block z-10 group-hover:scale-110 transition-transform duration-300">
+                  <div className="absolute -left-[21px] md:left-5 top-6 w-10 h-10 rounded-full bg-gradient-to-br from-gold to-amber-500 flex items-center justify-center text-white font-bold text-sm shadow-md z-10 group-hover:scale-110 transition-transform duration-300">
                     <span className="text-xs">{i + 1}</span>
                   </div>
                   

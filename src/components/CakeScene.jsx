@@ -90,7 +90,7 @@ function CakeSlice() {
 /* ── Scene Wrapper ────────────────────────────────────────── */
 const CakeScene = () => {
   return (
-    <div className="w-full h-full" style={{ minHeight: '400px' }}>
+    <div className="w-full h-full" style={{ minHeight: '250px' }}>
       <Canvas
         camera={{ position: [0, 2, 5], fov: 35 }}
         dpr={[1, 1.5]}

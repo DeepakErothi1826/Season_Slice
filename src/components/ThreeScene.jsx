@@ -12,7 +12,7 @@ export default function ThreeScene({ onSliceClick }) {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
-    <div className="w-full h-[500px] sm:h-[600px]">
+    <div className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px]">
       <Canvas 
         camera={{ position: [0, 8, 12], fov: 45 }} 
         shadows={{ type: THREE.PCFShadowMap }}
