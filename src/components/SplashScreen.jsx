@@ -1,6 +1,19 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import logoImg from '../assets/Seasonslice_logo_small.webp';
+
+const balloonColors = [
+  'bg-gold/15',
+  'bg-rose/10',
+  'bg-coffee-light/12',
+  'bg-cream-dark/20',
+  'bg-gold/10',
+  'bg-rose/8',
+  'bg-coffee-light/8',
+  'bg-gold/12',
+  'bg-amber-200/15',
+  'bg-coffee/8',
+];
 
 const SplashScreen = ({ onComplete }) => {
   const progressValue = useMotionValue(0);
@@ -11,6 +24,18 @@ const SplashScreen = ({ onComplete }) => {
   );
 
   const rafRef = useRef(null);
+
+  const balloons = useMemo(() =>
+    [...Array(14)].map((_, i) => ({
+      id: i,
+      size: 24 + (i % 7) * 10,
+      left: 2 + (i * 7) % 96,
+      delay: (i % 5) * 1.2,
+      duration: 9 + (i % 4) * 2,
+      sway: 12 + (i % 3) * 8,
+      color: balloonColors[i % balloonColors.length],
+    })), []
+  );
 
   useEffect(() => {
     const duration = 2400;
@@ -37,6 +62,40 @@ const SplashScreen = ({ onComplete }) => {
       className="fixed inset-0 bg-cream z-[100] flex items-center justify-center overflow-hidden"
       style={{ willChange: 'opacity' }}
     >
+      {/* Floating balloons */}
+      <div
+        className="absolute inset-0 pointer-events-none overflow-hidden"
+        style={{ backfaceVisibility: 'hidden' }}
+        aria-hidden="true"
+      >
+        {balloons.map((b) => (
+          <motion.div
+            key={b.id}
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: [0, 0.08, 0.12, 0.08, 0],
+              y: ['105vh', '-15vh'],
+              x: [0, b.sway, -b.sway * 0.6, b.sway * 0.3, 0],
+              scale: [1, 1.05, 0.98, 1.02, 1],
+            }}
+            transition={{
+              duration: b.duration,
+              delay: b.delay,
+              repeat: Infinity,
+              ease: [0.45, 0.05, 0.2, 0.99],
+              times: [0, 0.2, 0.5, 0.8, 1],
+            }}
+            className={`absolute rounded-full ${b.color}`}
+            style={{
+              width: b.size,
+              height: b.size * 0.85,
+              left: `${b.left}%`,
+              willChange: 'transform, opacity',
+            }}
+          />
+        ))}
+      </div>
+
       {/* Subtle background glow */}
       <div className="absolute inset-0 pointer-events-none" style={{ backfaceVisibility: 'hidden' }}>
         <motion.div
@@ -46,58 +105,6 @@ const SplashScreen = ({ onComplete }) => {
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-gold rounded-full"
           style={{ willChange: 'transform, opacity' }}
         />
-      </div>
-
-      {/* Decorative corner brackets */}
-      <div className="absolute inset-0 pointer-events-none">
-        <motion.svg
-          initial={{ opacity: 0, scaleX: 0 }}
-          animate={{ opacity: 0.15, scaleX: 1 }}
-          transition={{ delay: 0.4, duration: 1, ease: 'easeOut' }}
-          className="absolute top-8 left-8 w-16 h-16"
-          viewBox="0 0 64 64"
-          fill="none"
-          style={{ transformOrigin: 'left top', willChange: 'transform, opacity' }}
-        >
-          <path d="M0 64V0H64" stroke="#C8A96E" strokeWidth="1" vectorEffect="non-scaling-stroke" />
-          <path d="M0 20V0H20" stroke="#C8A96E" strokeWidth="1" vectorEffect="non-scaling-stroke" />
-        </motion.svg>
-        <motion.svg
-          initial={{ opacity: 0, scaleX: 0 }}
-          animate={{ opacity: 0.15, scaleX: 1 }}
-          transition={{ delay: 0.4, duration: 1, ease: 'easeOut' }}
-          className="absolute top-8 right-8 w-16 h-16"
-          viewBox="0 0 64 64"
-          fill="none"
-          style={{ transformOrigin: 'right top', willChange: 'transform, opacity' }}
-        >
-          <path d="M64 64V0H0" stroke="#C8A96E" strokeWidth="1" vectorEffect="non-scaling-stroke" />
-          <path d="M64 20V0H44" stroke="#C8A96E" strokeWidth="1" vectorEffect="non-scaling-stroke" />
-        </motion.svg>
-        <motion.svg
-          initial={{ opacity: 0, scaleX: 0 }}
-          animate={{ opacity: 0.15, scaleX: 1 }}
-          transition={{ delay: 0.4, duration: 1, ease: 'easeOut' }}
-          className="absolute bottom-8 left-8 w-16 h-16"
-          viewBox="0 0 64 64"
-          fill="none"
-          style={{ transformOrigin: 'left bottom', willChange: 'transform, opacity' }}
-        >
-          <path d="M0 0V64H64" stroke="#C8A96E" strokeWidth="1" vectorEffect="non-scaling-stroke" />
-          <path d="M0 44V64H20" stroke="#C8A96E" strokeWidth="1" vectorEffect="non-scaling-stroke" />
-        </motion.svg>
-        <motion.svg
-          initial={{ opacity: 0, scaleX: 0 }}
-          animate={{ opacity: 0.15, scaleX: 1 }}
-          transition={{ delay: 0.4, duration: 1, ease: 'easeOut' }}
-          className="absolute bottom-8 right-8 w-16 h-16"
-          viewBox="0 0 64 64"
-          fill="none"
-          style={{ transformOrigin: 'right bottom', willChange: 'transform, opacity' }}
-        >
-          <path d="M64 0V64H0" stroke="#C8A96E" strokeWidth="1" vectorEffect="non-scaling-stroke" />
-          <path d="M64 44V64H44" stroke="#C8A96E" strokeWidth="1" vectorEffect="non-scaling-stroke" />
-        </motion.svg>
       </div>
 
       {/* Light shaded circles - left and right */}
@@ -241,7 +248,6 @@ const SplashScreen = ({ onComplete }) => {
             transition={{ delay: 0.9, duration: 0.4 }}
           >
             <div className="relative h-[2px] w-[200px] bg-coffee/10 rounded-full overflow-hidden">
-              {/* Progress fill */}
               <motion.div
                 className="h-full bg-gradient-to-r from-gold via-caramel to-gold rounded-full"
                 style={{ width: progressWidth }}
@@ -258,7 +264,7 @@ const SplashScreen = ({ onComplete }) => {
           </motion.div>
         </div>
 
-        {/* Floating dots - simplified */}
+        {/* Floating dots */}
         {[...Array(3)].map((_, i) => (
           <motion.div
             key={i}
