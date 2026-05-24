@@ -1,4 +1,4 @@
-import { useEffect, useRef, useMemo } from 'react';
+import { useEffect, useRef, useState, useMemo } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import logoImg from '../assets/Seasonslice_logo_small.webp';
 
@@ -20,8 +20,10 @@ const SplashScreen = ({ onComplete }) => {
   const smoothProgress = useSpring(progressValue, { stiffness: 40, damping: 25 });
   const progressWidth = useTransform(smoothProgress, [0, 100], ['0%', '100%']);
   const progressText = useTransform(smoothProgress, (v) =>
-    Math.round(v) < 100 ? 'LOADING...' : 'WELCOME'
+    Math.round(v) < 100 ? 'LOADING…' : 'WELCOME'
   );
+
+  const [showWelcome, setShowWelcome] = useState(false);
 
   const rafRef = useRef(null);
 
@@ -47,7 +49,10 @@ const SplashScreen = ({ onComplete }) => {
       const eased = 1 - Math.pow(1 - t, 3);
       progressValue.set(eased * 100);
       if (t < 1) rafRef.current = requestAnimationFrame(frame);
-      else setTimeout(() => onComplete(), 400);
+      else {
+        setShowWelcome(true);
+        setTimeout(() => onComplete(), 400);
+      }
     };
 
     rafRef.current = requestAnimationFrame(frame);
@@ -154,9 +159,9 @@ const SplashScreen = ({ onComplete }) => {
         ))}
       </div>
 
-      <div className="text-center relative z-10">
+      <div className="flex flex-col items-center justify-center relative z-10 min-h-0">
         {/* Logo with spring reveal */}
-        <div className="relative mx-auto mb-8" style={{ backfaceVisibility: 'hidden' }}>
+        <div className="relative mx-auto mb-6 sm:mb-8" style={{ backfaceVisibility: 'hidden' }}>
           {/* Outer counter-rotating ring */}
           <motion.div
             animate={{ rotate: -360 }}
@@ -223,7 +228,7 @@ const SplashScreen = ({ onComplete }) => {
             initial={{ y: 60 }}
             animate={{ y: 0 }}
             transition={{ delay: 0.5, type: 'spring', stiffness: 80, damping: 18 }}
-            className="font-display text-4xl sm:text-5xl font-bold text-coffee tracking-wide"
+            className="font-display text-4xl sm:text-5xl font-bold text-coffee tracking-wide text-center"
           >
             Season Slice
           </motion.h1>
@@ -234,18 +239,19 @@ const SplashScreen = ({ onComplete }) => {
             initial={{ y: 30 }}
             animate={{ y: 0 }}
             transition={{ delay: 0.7, type: 'spring', stiffness: 80, damping: 18 }}
-            className="text-coffee-light/60 text-xs tracking-[0.35em] uppercase font-body"
+            className="text-coffee-light/60 text-xs tracking-[0.35em] uppercase font-body text-center"
           >
             Cake & Coffee
           </motion.p>
         </div>
 
         {/* Progress bar */}
-        <div className="mx-auto" style={{ backfaceVisibility: 'hidden' }}>
+        <div className="flex flex-col items-center" style={{ backfaceVisibility: 'hidden' }}>
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.9, duration: 0.4 }}
+            className="flex flex-col items-center"
           >
             <div className="relative h-[2px] w-[200px] bg-coffee/10 rounded-full overflow-hidden">
               <motion.div
@@ -253,18 +259,25 @@ const SplashScreen = ({ onComplete }) => {
                 style={{ width: progressWidth }}
               />
             </div>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.2 }}
-              className="text-coffee-light/40 text-[10px] font-body mt-3 tracking-widest"
-            >
-              {progressText}
-            </motion.p>
+            <div className="h-5 mt-3 flex items-center justify-center">
+              <motion.p
+                key={showWelcome ? 'welcome' : 'loading'}
+                initial={{ opacity: 0, y: 4 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -4 }}
+                transition={{ duration: 0.35 }}
+                className="text-coffee-light/40 text-[10px] font-body tracking-widest"
+              >
+                {showWelcome ? 'WELCOME' : 'LOADING…'}
+              </motion.p>
+            </div>
           </motion.div>
         </div>
 
-        {/* Floating dots */}
+      </div>
+
+      {/* Floating dots */}
+      <div className="absolute bottom-[30%] left-1/2 -translate-x-1/2 pointer-events-none">
         {[...Array(3)].map((_, i) => (
           <motion.div
             key={i}
@@ -280,8 +293,8 @@ const SplashScreen = ({ onComplete }) => {
               repeatDelay: 1.5,
               ease: 'easeInOut',
             }}
-            className="absolute bottom-1/3 left-1/2 w-1.5 h-1.5 bg-gold rounded-full"
-            style={{ x: (i - 1) * 25, willChange: 'transform, opacity' }}
+            className="absolute w-1.5 h-1.5 bg-gold rounded-full"
+            style={{ left: (i - 1) * 25, willChange: 'transform, opacity' }}
           />
         ))}
       </div>
