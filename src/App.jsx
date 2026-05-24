@@ -1,5 +1,5 @@
 import { useState, lazy, Suspense } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import CartDrawer from './components/CartDrawer';
@@ -45,9 +45,11 @@ function PageLoader() {
 function App() {
   const [showSplash, setShowSplash] = useState(true);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const handleSplashComplete = () => {
     setShowSplash(false);
+    navigate('/');
   };
 
   return (
@@ -66,12 +68,12 @@ function App() {
               <Suspense fallback={<PageLoader />}>
                 <Routes location={location} key={location.pathname}>
                   <Route path="/" element={<AnimatedPage><Home /></AnimatedPage>} />
-                  <Route path="*" element={<AnimatedPage><Home /></AnimatedPage>} />
                   <Route path="/about" element={<AnimatedPage><About /></AnimatedPage>} />
                   <Route path="/menu" element={<AnimatedPage><MenuPage /></AnimatedPage>} />
                   <Route path="/contact" element={<AnimatedPage><Contact /></AnimatedPage>} />
                   <Route path="/cart" element={<AnimatedPage><CartPage /></AnimatedPage>} />
                   <Route path="/product/:id" element={<AnimatedPage><ProductDetail /></AnimatedPage>} />
+                  <Route path="*" element={<AnimatedPage><Home /></AnimatedPage>} />
                 </Routes>
               </Suspense>
             </AnimatePresence>
