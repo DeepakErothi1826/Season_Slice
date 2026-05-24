@@ -1,21 +1,41 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Send, Check, MapPin, Phone, Mail, Clock, MessageCircle } from 'lucide-react';
 import { contactInfo } from '../data/contactData';
 import Newsletter from '../components/Newsletter';
 
+const stripTags = (s) => s.replace(/<[^>]*>/g, '').replace(/[<>]/g, '').trim();
+
 const Contact = () => {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const loadTime = useRef(Date.now());
 
   const validate = () => {
     const e = {};
-    if (!form.name.trim()) e.name = 'Name is required';
-    if (!form.email.trim() || !form.email.includes('@')) e.email = 'Valid email required';
-    if (!form.message.trim()) e.message = 'Message is required';
+    const name = stripTags(form.name);
+    if (!name) e.name = 'Name is required';
+    else if (name.length > 100) e.name = 'Name is too long';
+    if (!form.email.trim()) e.email = 'Email is required';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) e.email = 'Valid email required';
+    else if (form.email.length > 254) e.email = 'Email is too long';
+    const msg = stripTags(form.message);
+    if (!msg) e.message = 'Message is required';
+    else if (msg.length < 10) e.message = 'Message must be at least 10 characters';
+    else if (msg.length > 5000) e.message = 'Message is too long';
+    const subj = stripTags(form.subject);
+    if (subj.length > 200) e.subject = 'Subject is too long';
+    if (Date.now() - loadTime.current < 3000) e._bot = 'Please wait before submitting';
     return e;
+  };
+
+  const sanitize = (v) => stripTags(v);
+
+  const handleChange = (field) => (e) => {
+    setForm((prev) => ({ ...prev, [field]: e.target.value }));
+    if (errors[field]) setErrors((prev) => { const n = { ...prev }; delete n[field]; return n; });
   };
 
   const handleSubmit = (e) => {
@@ -56,7 +76,7 @@ const Contact = () => {
              "@context": "https://schema.org",
              "@type": "LocalBusiness",
              "name": "Season Slice Cafe",
-             "image": "https://www.seasonslice.com/assets/cake-blueberry.png",
+             "image": "https://www.seasonslice.com/images/logo/Seasonslice_logo.webp",
              "@id": "https://www.seasonslice.com/",
              "url": "https://www.seasonslice.com/",
              "telephone": "+91 70211 85010",
@@ -194,7 +214,8 @@ const Contact = () => {
                           type="text"
                           placeholder="John Doe"
                           value={form.name}
-                          onChange={(e) => setForm({ ...form, name: e.target.value })}
+                          onChange={handleChange('name')}
+                          maxLength={100}
                           className={`w-full px-5 py-4 bg-cream rounded-xl text-coffee placeholder:text-coffee-light/40 focus:outline-none focus:ring-2 focus:ring-gold/50 transition-all ${errors.name ? 'ring-2 ring-rose' : ''}`}
                         />
                         {errors.name && <p className="text-rose text-xs mt-1">{errors.name}</p>}
@@ -205,7 +226,8 @@ const Contact = () => {
                           type="email"
                           placeholder="john@example.com"
                           value={form.email}
-                          onChange={(e) => setForm({ ...form, email: e.target.value })}
+                          onChange={handleChange('email')}
+                          maxLength={254}
                           className={`w-full px-5 py-4 bg-cream rounded-xl text-coffee placeholder:text-coffee-light/40 focus:outline-none focus:ring-2 focus:ring-gold/50 transition-all ${errors.email ? 'ring-2 ring-rose' : ''}`}
                         />
                         {errors.email && <p className="text-rose text-xs mt-1">{errors.email}</p>}
@@ -217,9 +239,11 @@ const Contact = () => {
                         type="text"
                         placeholder="How can we help?"
                         value={form.subject}
-                        onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                        className="w-full px-5 py-4 bg-cream rounded-xl text-coffee placeholder:text-coffee-light/40 focus:outline-none focus:ring-2 focus:ring-gold/50 transition-all"
+                        onChange={handleChange('subject')}
+                        maxLength={200}
+                        className={`w-full px-5 py-4 bg-cream rounded-xl text-coffee placeholder:text-coffee-light/40 focus:outline-none focus:ring-2 focus:ring-gold/50 transition-all ${errors.subject ? 'ring-2 ring-rose' : ''}`}
                       />
+                      {errors.subject && <p className="text-rose text-xs mt-1">{errors.subject}</p>}
                     </div>
                     <div>
                       <label className="text-sm font-medium text-coffee mb-2 block">Your Message</label>
@@ -227,7 +251,8 @@ const Contact = () => {
                         rows={5}
                         placeholder="Tell us what's on your mind..."
                         value={form.message}
-                        onChange={(e) => setForm({ ...form, message: e.target.value })}
+                        onChange={handleChange('message')}
+                        maxLength={5000}
                         className={`w-full px-5 py-4 bg-cream rounded-xl text-coffee placeholder:text-coffee-light/40 focus:outline-none focus:ring-2 focus:ring-gold/50 transition-all resize-none ${errors.message ? 'ring-2 ring-rose' : ''}`}
                       />
                       {errors.message && <p className="text-rose text-xs mt-1">{errors.message}</p>}

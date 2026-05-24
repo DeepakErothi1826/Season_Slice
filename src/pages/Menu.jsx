@@ -37,7 +37,7 @@ const MenuPage = () => {
              "@context": "https://schema.org",
              "@type": "Restaurant",
              "name": "Season Slice Cafe",
-             "image": "https://www.seasonslice.com/assets/cake-blueberry.png",
+             "image": "https://www.seasonslice.com/images/logo/Seasonslice_logo.webp",
              "menu": "https://www.seasonslice.com/menu",
              "servesCuisine": [
                "Coffee Shop",
