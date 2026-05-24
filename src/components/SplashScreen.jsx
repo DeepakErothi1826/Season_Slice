@@ -48,10 +48,110 @@ const SplashScreen = ({ onComplete }) => {
         />
       </div>
 
+      {/* Decorative corner brackets */}
+      <div className="absolute inset-0 pointer-events-none">
+        <motion.svg
+          initial={{ opacity: 0, scaleX: 0 }}
+          animate={{ opacity: 0.15, scaleX: 1 }}
+          transition={{ delay: 0.4, duration: 1, ease: 'easeOut' }}
+          className="absolute top-8 left-8 w-16 h-16"
+          viewBox="0 0 64 64"
+          fill="none"
+          style={{ transformOrigin: 'left top', willChange: 'transform, opacity' }}
+        >
+          <path d="M0 64V0H64" stroke="#C8A96E" strokeWidth="1" vectorEffect="non-scaling-stroke" />
+          <path d="M0 20V0H20" stroke="#C8A96E" strokeWidth="1" vectorEffect="non-scaling-stroke" />
+        </motion.svg>
+        <motion.svg
+          initial={{ opacity: 0, scaleX: 0 }}
+          animate={{ opacity: 0.15, scaleX: 1 }}
+          transition={{ delay: 0.4, duration: 1, ease: 'easeOut' }}
+          className="absolute top-8 right-8 w-16 h-16"
+          viewBox="0 0 64 64"
+          fill="none"
+          style={{ transformOrigin: 'right top', willChange: 'transform, opacity' }}
+        >
+          <path d="M64 64V0H0" stroke="#C8A96E" strokeWidth="1" vectorEffect="non-scaling-stroke" />
+          <path d="M64 20V0H44" stroke="#C8A96E" strokeWidth="1" vectorEffect="non-scaling-stroke" />
+        </motion.svg>
+        <motion.svg
+          initial={{ opacity: 0, scaleX: 0 }}
+          animate={{ opacity: 0.15, scaleX: 1 }}
+          transition={{ delay: 0.4, duration: 1, ease: 'easeOut' }}
+          className="absolute bottom-8 left-8 w-16 h-16"
+          viewBox="0 0 64 64"
+          fill="none"
+          style={{ transformOrigin: 'left bottom', willChange: 'transform, opacity' }}
+        >
+          <path d="M0 0V64H64" stroke="#C8A96E" strokeWidth="1" vectorEffect="non-scaling-stroke" />
+          <path d="M0 44V64H20" stroke="#C8A96E" strokeWidth="1" vectorEffect="non-scaling-stroke" />
+        </motion.svg>
+        <motion.svg
+          initial={{ opacity: 0, scaleX: 0 }}
+          animate={{ opacity: 0.15, scaleX: 1 }}
+          transition={{ delay: 0.4, duration: 1, ease: 'easeOut' }}
+          className="absolute bottom-8 right-8 w-16 h-16"
+          viewBox="0 0 64 64"
+          fill="none"
+          style={{ transformOrigin: 'right bottom', willChange: 'transform, opacity' }}
+        >
+          <path d="M64 0V64H0" stroke="#C8A96E" strokeWidth="1" vectorEffect="non-scaling-stroke" />
+          <path d="M64 44V64H44" stroke="#C8A96E" strokeWidth="1" vectorEffect="non-scaling-stroke" />
+        </motion.svg>
+      </div>
+
+      {/* Floating gold dust particles */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={`dust-${i}`}
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{
+              opacity: [0, 0.15, 0],
+              scale: [0, 1, 0],
+              y: [0, -(60 + (i % 4) * 30)],
+              x: [0, (i % 2 === 0 ? 1 : -1) * (15 + (i % 3) * 10)],
+            }}
+            transition={{
+              delay: 0.8 + i * 0.25,
+              duration: 2.5 + (i % 3) * 0.5,
+              repeat: Infinity,
+              repeatDelay: 1 + (i % 2) * 0.5,
+              ease: 'easeInOut',
+            }}
+            className="absolute w-1 h-1 bg-gold rounded-full"
+            style={{
+              left: `${38 + (i % 5) * 6}%`,
+              top: `${45 + (i % 3) * 8}%`,
+              willChange: 'transform, opacity',
+            }}
+          />
+        ))}
+      </div>
+
       <div className="text-center relative z-10">
         {/* Logo with spring reveal */}
         <div className="relative mx-auto mb-8" style={{ backfaceVisibility: 'hidden' }}>
-          {/* Rotating decorative ring */}
+          {/* Outer counter-rotating ring */}
+          <motion.div
+            animate={{ rotate: -360 }}
+            transition={{ duration: 6, repeat: Infinity, ease: 'linear' }}
+            className="absolute inset-0 w-56 h-56 mx-auto"
+            style={{ willChange: 'transform' }}
+          >
+            <svg viewBox="0 0 120 120" className="w-full h-full">
+              <circle
+                cx="60" cy="60" r="50"
+                fill="none"
+                stroke="#C8A96E"
+                strokeWidth="0.5"
+                strokeDasharray="2 10"
+                opacity="0.2"
+              />
+            </svg>
+          </motion.div>
+
+          {/* Inner rotating decorative ring */}
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
@@ -122,7 +222,8 @@ const SplashScreen = ({ onComplete }) => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.9, duration: 0.4 }}
           >
-            <div className="h-[2px] w-[200px] bg-coffee/10 rounded-full overflow-hidden">
+            <div className="relative h-[2px] w-[200px] bg-coffee/10 rounded-full overflow-hidden">
+              {/* Progress fill */}
               <motion.div
                 className="h-full bg-gradient-to-r from-gold via-caramel to-gold rounded-full"
                 style={{ width: progressWidth }}
