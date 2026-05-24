@@ -3,16 +3,16 @@ import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import logoImg from '../assets/Seasonslice_logo_small.webp';
 
 const balloonColors = [
-  'bg-gold/15',
-  'bg-rose/10',
-  'bg-coffee-light/12',
-  'bg-cream-dark/20',
-  'bg-gold/10',
-  'bg-rose/8',
-  'bg-coffee-light/8',
-  'bg-gold/12',
-  'bg-amber-200/15',
-  'bg-coffee/8',
+  'bg-gold/40',
+  'bg-rose/30',
+  'bg-coffee-light/35',
+  'bg-amber-400/30',
+  'bg-gold/35',
+  'bg-rose/25',
+  'bg-coffee/20',
+  'bg-gold/45',
+  'bg-amber-200/40',
+  'bg-coffee-light/30',
 ];
 
 const SplashScreen = ({ onComplete }) => {
@@ -73,7 +73,7 @@ const SplashScreen = ({ onComplete }) => {
             key={b.id}
             initial={{ opacity: 0 }}
             animate={{
-              opacity: [0, 0.08, 0.12, 0.08, 0],
+              opacity: [0, 0.55, 0.7, 0.55, 0],
               y: ['105vh', '-15vh'],
               x: [0, b.sway, -b.sway * 0.6, b.sway * 0.3, 0],
               scale: [1, 1.05, 0.98, 1.02, 1],
