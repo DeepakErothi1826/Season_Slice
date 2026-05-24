@@ -63,7 +63,7 @@ const ProductCarousel = ({ items, title = null }) => {
               <h3 className="font-display font-bold text-coffee text-base mb-1">{item.name}</h3>
               <p className="text-coffee-light/50 text-xs line-clamp-2 mb-4">{item.description}</p>
               <div className="flex items-center justify-between pt-3 border-t border-coffee/5">
-                <span className="font-display text-xl font-bold text-coffee/80">{item.price} Rs</span>
+                <span className="font-display text-xl font-bold text-coffee/80">{String(item.price).replace('.', '')} Rs</span>
                 <button onClick={() => addItem(item)} className="flex items-center gap-1.5 bg-coffee text-cream px-4 py-2 rounded-full text-[10px] font-medium uppercase tracking-wider hover:bg-coffee-light transition-colors">
                   <ShoppingBag size={11} /> Add
                 </button>

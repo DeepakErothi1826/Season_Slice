@@ -291,7 +291,7 @@ const Home = () => {
                     <img src={item.image} alt={item.name} className="w-full h-full object-cover" onError={(e) => { e.target.style.display = 'none'; }} />
                   </div>
                   <h3 className="font-display text-base font-bold text-coffee mb-2">{item.name}</h3>
-                  <span className="font-display text-2xl text-gradient font-bold bg-gradient-to-r from-gold to-amber-500 bg-clip-text">{item.price} Rs</span>
+                  <span className="font-display text-2xl text-gradient font-bold bg-gradient-to-r from-gold to-amber-500 bg-clip-text">{String(item.price).replace('.', '')} Rs</span>
                 </motion.div>
               </Link>
             ))}

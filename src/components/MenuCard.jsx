@@ -41,7 +41,7 @@ const MenuCard = ({ item, index = 0 }) => {
           <p className="text-coffee-light/60 text-[10px] sm:text-xs font-body leading-relaxed line-clamp-2 mb-3">{item.description}</p>
 
           <div className="flex items-center justify-between pt-2 border-t border-gray-100">
-            <span className="font-display text-lg sm:text-xl font-bold bg-gradient-to-r from-gold to-amber-500 bg-clip-text text-transparent">{item.price} Rs</span>
+            <span className="font-display text-lg sm:text-xl font-bold bg-gradient-to-r from-gold to-amber-500 bg-clip-text text-transparent">{String(item.price).replace('.', '')} Rs</span>
             <span className="text-[10px] sm:text-xs text-gold font-medium uppercase tracking-wider group-hover:text-coffee transition-colors font-bold">
               View
             </span>

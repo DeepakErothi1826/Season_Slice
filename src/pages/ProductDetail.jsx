@@ -127,7 +127,7 @@ const ProductDetail = () => {
                 <span className="text-coffee-light/60 font-body font-medium">{item.rating} rating</span>
               </div>
 
-              <p className="text-4xl font-display font-bold bg-gradient-to-r from-gold to-amber-500 bg-clip-text text-transparent mb-6">{item.price} Rs</p>
+              <p className="text-4xl font-display font-bold bg-gradient-to-r from-gold to-amber-500 bg-clip-text text-transparent mb-6">{String(item.price).replace('.', '')} Rs</p>
 
               <p className="text-coffee-light/70 font-body text-base leading-relaxed mb-8">
                 {item.description}

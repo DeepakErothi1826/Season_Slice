@@ -89,7 +89,7 @@ const CartPage = () => {
                           </button>
                         </div>
                         <div className="flex items-center gap-4">
-                          <span className="font-display text-xl font-bold text-coffee">{item.price} Rs</span>
+                          <span className="font-display text-xl font-bold text-coffee">{String(item.price).replace('.', '')} Rs</span>
                           <button
                             onClick={() => removeItem(item.id)}
                             className="p-2 rounded-full hover:bg-rose/20 text-rose transition-colors"

@@ -59,7 +59,7 @@ const CartDrawer = () => {
                       <img src={item.image} alt={item.name} className="w-20 h-20 rounded-lg object-cover" />
                       <div className="flex-1 min-w-0">
                         <h4 className="font-display font-semibold text-coffee text-sm truncate">{item.name}</h4>
-                        <p className="text-coffee-light/60 text-xs font-body mt-0.5">{item.price} Rs each</p>
+                        <p className="text-coffee-light/60 text-xs font-body mt-0.5">{String(item.price).replace('.', '')} Rs each</p>
                         <div className="flex items-center justify-between mt-2">
                           <div className="flex items-center gap-2 bg-cream-dark rounded-full px-1 py-0.5">
                             <button onClick={() => updateQuantity(item.id, item.quantity - 1)} className="w-9 h-9 rounded-full flex items-center justify-center hover:bg-cream transition-colors text-coffee">
