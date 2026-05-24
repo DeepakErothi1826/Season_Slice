@@ -111,23 +111,35 @@ const About = () => {
       </section>
 
       {/* Values */}
-      <section className="py-20 bg-gradient-to-br from-coffee via-coffee to-coffee-light">
+      <section className="py-24 bg-gradient-to-br from-coffee via-coffee to-coffee-light">
         <div className="max-w-7xl mx-auto px-6">
           <ScrollReveal>
-            <div className="text-center mb-14">
+            <div className="text-center mb-16">
               <p className="text-gold font-body text-sm tracking-widest uppercase mb-2 font-bold">What Drives Us</p>
               <h2 className="text-4xl sm:text-5xl font-display font-bold text-cream">Our Values</h2>
+              <p className="text-cream/60 font-body mt-6 max-w-xl mx-auto">
+                These guiding principles shape everything we do, from ingredient selection to customer service, ensuring every experience at Season Slice is extraordinary.
+              </p>
             </div>
           </ScrollReveal>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {values.map((v, i) => (
               <ScrollReveal key={i} delay={i * 0.15}>
-                <div className="text-center space-y-4 p-8 bg-white/10 backdrop-blur-sm rounded-3xl border border-white/10 hover:bg-white/20 transition-all">
-                  <div className={`w-16 h-16 bg-gradient-to-br ${v.color} rounded-2xl flex items-center justify-center mx-auto shadow-lg`}>
-                    <v.icon size={28} className="text-white" />
+                <div className="relative group">
+                  <div className="aspect-[1/1] w-full bg-white/5 backdrop-blur-sm rounded-3xl border border-white/10 hover:bg-white/10 transition-all duration-500 overflow-hidden">
+                    {/* Animated background gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-br via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className={`absolute inset-0 bg-gradient-to-br ${v.color} opacity-20 mix-blend-overlay`} />
+                    <div className="relative z-10 flex h-full items-center justify-center p-8">
+                      <div className={`w-20 h-20 bg-gradient-to-br ${v.color} rounded-2xl flex items-center justify-center text-white shadow-lg transform transition-transform duration-500 group-hover:scale-110`}>
+                        <v.icon size={24} className="text-white" />
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="font-display text-xl font-bold text-cream">{v.title}</h3>
-                  <p className="text-cream/60 font-body text-sm leading-relaxed">{v.desc}</p>
+                  <div className="mt-6 text-center">
+                    <h3 className="font-display text-xl font-bold text-cream transition-colors duration-500 group-hover:text-white/90">{v.title}</h3>
+                    <p className="text-cream/60 font-body text-sm leading-relaxed mt-2">{v.desc}</p>
+                  </div>
                 </div>
               </ScrollReveal>
             ))}
@@ -136,40 +148,76 @@ const About = () => {
       </section>
 
       {/* Timeline */}
-      <section className="py-20 px-6 bg-gradient-to-b from-cream-light to-white">
+      <section className="py-24 px-6 bg-gradient-to-b from-cream-light to-white">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
-            <div className="text-center mb-12">
+            <div className="text-center mb-16">
               <p className="text-gold/80 text-xs uppercase tracking-[0.3em] mb-4 font-bold">Our Journey</p>
-              <h2 className="text-3xl sm:text-4xl font-display font-bold text-coffee">Milestones</h2>
+              <h2 className="text-3xl sm:text-4xl font-display font-bold text-coffee">Milestones That Shaped Us</h2>
+              <p className="text-gold/60 font-body mt-4 max-w-xl mx-auto">
+                From our humble beginnings to becoming Mumbai's beloved bakery, each milestone represents our commitment to crafting extraordinary experiences, one slice at a time.
+              </p>
             </div>
           </ScrollReveal>
+          
+          {/* Enhanced Timeline with decorative elements */}
           <div className="relative">
-            <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-gold/40 via-rose/30 to-blue/20 hidden md:block" />
+            {/* Main timeline line with decorative dots */}
+            <div className="absolute left-6 top-0 bottom-0 w-px md:w-1 bg-gradient-to-b from-gold/40 via-rose/30 to-blue/20 hidden md:block" />
+            {/* Decorative dots on the line */}
+            <div className="absolute left-4 top-0 bottom-0 w-3 md:w-4 -translate-x-1/2 hidden md:block">
+              {timeline.map((_, i) => (
+                <div key={i} className="relative h-2 w-2 rounded-full bg-gold mb-[calc(100%/5)]" />
+              ))}
+            </div>
+            
+            {/* Timeline items */}
             {timeline.map((item, i) => (
               <ScrollReveal key={item.year} delay={i * 0.1}>
-                <div className="relative pl-0 md:pl-14 pb-10 last:pb-0 group">
-                  <div className="absolute left-3 md:left-5 top-6 w-3 h-3 rounded-full bg-white border-2 border-gold shadow-md hidden md:block z-10 group-hover:scale-150 transition-transform" />
-                  <div className="relative rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500">
+                <div className="relative pl-0 md:pl-14 pb-12 last:pb-0 group">
+                  {/* Timeline marker */}
+                  <div className="absolute left-3 md:left-5 top-6 w-10 h-10 rounded-full bg-gradient-to-br from-gold to-amber-500 flex items-center justify-center text-white font-bold text-sm shadow-md hidden md:block z-10 group-hover:scale-110 transition-transform duration-300">
+                    <span className="text-xs">{i + 1}</span>
+                  </div>
+                  
+                  {/* Milestone content */}
+                  <div className="relative rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 group">
                     <div className="relative h-48 sm:h-52">
-                      <img src={item.image} alt="" className="w-full h-full object-cover" loading="lazy" onError={(e) => { e.target.style.display = 'none'; }} />
-                      <div className={`absolute inset-0 ${item.color} opacity-60 mix-blend-multiply`} />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                      <div className="absolute top-4 right-4">
-                        <span className="inline-block text-xs font-bold text-white uppercase tracking-widest bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/30">
-                          {item.year}
-                        </span>
+                      {/* Image with enhanced hover effect */}
+                      <div className="relative h-full w-full overflow-hidden">
+                        <img src={item.image} alt="" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" onError={(e) => { e.target.style.display = 'none'; }} />
+                        <div className={`absolute inset-0 ${item.color} opacity-50 mix-blend-multiply transition-opacity duration-500 group-hover:opacity-30`} />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                        {/* Year badge */}
+                        <div className="absolute top-4 left-4">
+                          <span className="inline-block text-xs font-bold text-white uppercase tracking-widest bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full border border-white/30 shadow-md">
+                            {item.year}
+                          </span>
+                        </div>
                       </div>
+                      {/* Event description with enhanced typography */}
                       <div className="absolute bottom-4 left-5 right-5">
-                        <p className="font-display text-xl sm:text-2xl font-bold text-white leading-tight drop-shadow-lg">
+                        <p className="font-display text-xl sm:text-2xl font-bold text-white leading-tight drop-shadow-lg transition-all duration-300 group-hover:-translate-y-1">
                           {item.event}
                         </p>
                       </div>
                     </div>
+                    {/* Subtle hover lift effect */}
+                    <div className="absolute inset-0 bg-transparent transition-all duration-500 hover:-translate-y-2"></div>
                   </div>
+                  
+                  {/* Connector line to timeline (for mobile) */}
+                  {!timeline[i + 1] && (
+                    <div className="absolute left-3 md:left-5 bottom-0 w-3 h-3 rounded-full bg-gradient-to-br from-gold to-amber-500 hidden md:block" />
+                  )}
                 </div>
               </ScrollReveal>
             ))}
+          </div>
+          
+          {/* Mobile timeline connector */}
+          <div className="hidden md:block">
+            <div className="w-0.5 mx-auto mt-16 mb-16 bg-gradient-to-b from-gold/40 via-rose/30 to-blue/20" />
           </div>
         </div>
       </section>
