@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEASON SLICE - SYS_ERR</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&display=swap');
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #0a0a0a;
+  color: #e0e0e0;
+  font-family: 'Inter', monospace;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,255,65,0.03) 2px, rgba(0,255,65,0.03) 4px);
+  pointer-events: none;
+  z-index: 999;
+}
+
+.scanline {
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.8) 3px, rgba(0,0,0,0.8) 4px);
+  pointer-events: none;
+  z-index: 1000;
+  animation: scan 0.15s linear infinite;
+  opacity: 0.4;
+}
+
+@keyframes scan {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(4px); }
+}
+
+.crt {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.7) 100%);
+  pointer-events: none;
+  z-index: 1001;
+}
+
+.glitch-bars {
+  position: fixed;
+  inset: 0;
+  z-index: 998;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.glitch-bar {
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background: rgba(0, 255, 100, 0.15);
+  animation: barSlide 3s linear infinite;
+}
+
+.glitch-bar:nth-child(1) { top: 10%; animation-delay: 0s; height: 2px; }
+.glitch-bar:nth-child(2) { top: 25%; animation-delay: 0.4s; height: 3px; }
+.glitch-bar:nth-child(3) { top: 42%; animation-delay: 1.2s; height: 1px; }
+.glitch-bar:nth-child(4) { top: 58%; animation-delay: 0.8s; height: 4px; }
+.glitch-bar:nth-child(5) { top: 73%; animation-delay: 1.6s; height: 2px; }
+.glitch-bar:nth-child(6) { top: 88%; animation-delay: 2.0s; height: 3px; }
+
+@keyframes barSlide {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+  100% { transform: translateX(100%); }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+header {
+  text-align: center;
+  padding: 30px 0;
+  border-bottom: 1px solid rgba(0, 255, 65, 0.2);
+  margin-bottom: 50px;
+  position: relative;
+}
+
+header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #00ff41, transparent);
+  animation: glitchLine 2s ease-in-out infinite;
+}
+
+@keyframes glitchLine {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 900;
+  letter-spacing: -2px;
+  background: linear-gradient(135deg, #ff0055, #00ff41, #ff0055);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 3s ease infinite, glitchText 4s ease-in-out infinite;
+  position: relative;
+  display: inline-block;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes glitchText {
+  0%, 90%, 100% { transform: translate(0); }
+  92% { transform: translate(-3px, 2px); }
+  94% { transform: translate(3px, -1px); }
+  96% { transform: translate(-2px, -2px); }
+  98% { transform: translate(2px, 1px); }
+}
+
+.logo-sub {
+  font-family: 'Inter', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  color: #00ff41;
+  opacity: 0.6;
+  margin-top: 5px;
+  display: block;
+}
+
+.sys-badge {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 6px 18px;
+  border: 1px solid #ff0044;
+  color: #ff0044;
+  font-family: 'Inter', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.error-banner {
+  background: rgba(255, 0, 68, 0.08);
+  border: 1px solid rgba(255, 0, 68, 0.3);
+  padding: 20px;
+  margin-bottom: 40px;
+  text-align: center;
+  font-family: 'Courier New', monospace;
+  position: relative;
+  overflow: hidden;
+}
+
+.error-banner::before {
+  content: '⚠ SYSTEM CORRUPTION DETECTED ⚠';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 0, 68, 0.05);
+  animation: marquee 8s linear infinite;
+  white-space: nowrap;
+  font-size: 0.8rem;
+  letter-spacing: 4px;
+  color: #ff0044;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.error-banner-content {
+  position: relative;
+  z-index: 1;
+  mix-blend-mode: difference;
+}
+
+.error-code {
+  font-size: 0.8rem;
+  color: #ff0044;
+  letter-spacing: 2px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin: 40px 0;
+}
+
+.card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 30px;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(2px);
+  transition: all 0.3s;
+}
+
+.card:hover {
+  border-color: rgba(0, 255, 65, 0.2);
+  background: rgba(0, 255, 65, 0.03);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent, #00ff41), transparent);
+  opacity: 0.3;
+}
+
+.card:nth-child(1) { --accent: #00ff41; }
+.card:nth-child(2) { --accent: #ff0044; }
+.card:nth-child(3) { --accent: #ff7700; }
+
+.card-icon {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  filter: hue-rotate(45deg);
+  animation: flicker 2s step-start infinite;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  3% { opacity: 0.4; }
+  6% { opacity: 1; }
+  7% { opacity: 0.2; }
+  8% { opacity: 1; }
+  50% { opacity: 0.8; }
+  53% { opacity: 0.3; }
+  54% { opacity: 1; }
+}
+
+.card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.card p {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+  font-family: 'Courier New', monospace;
+}
+
+.card .price {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 4px 12px;
+  border: 1px solid var(--accent, #00ff41);
+  color: var(--accent, #00ff41);
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  font-family: 'Courier New', monospace;
+}
+
+.corrupted-text {
+  color: rgba(255,255,255,0.15);
+  pointer-events: none;
+  user-select: none;
+}
+
+.menu-section {
+  margin: 60px 0;
+}
+
+.menu-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: 30px;
+  position: relative;
+  display: inline-block;
+}
+
+.menu-section h2::after {
+  content: attr(data-glitch);
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #ff0044;
+  opacity: 0.3;
+  transform: translate(-2px, 2px);
+  pointer-events: none;
+}
+
+.menu-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.menu-item {
+  background: rgba(255,255,255,0.02);
+  padding: 20px;
+  border-left: 2px solid rgba(0, 255, 65, 0.15);
+  transition: all 0.3s;
+  position: relative;
+}
+
+.menu-item:hover {
+  border-left-color: #00ff41;
+  background: rgba(0, 255, 65, 0.03);
+}
+
+.menu-item .name {
+  color: #fff;
+  font-weight: 500;
+  margin-bottom: 4px;
+  font-size: 0.95rem;
+}
+
+.menu-item .desc {
+  color: rgba(255,255,255,0.35);
+  font-size: 0.78rem;
+  font-family: 'Courier New', monospace;
+}
+
+.menu-item .meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.menu-item .meta span {
+  font-size: 0.75rem;
+  color: #00ff41;
+  font-family: 'Courier New', monospace;
+}
+
+.menu-item .meta span:last-child {
+  color: rgba(255,255,255,0.25);
+  text-decoration: line-through;
+}
+
+footer {
+  text-align: center;
+  padding: 40px 0;
+  border-top: 1px solid rgba(0, 255, 65, 0.1);
+  margin-top: 60px;
+  position: relative;
+}
+
+footer p {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 2px;
+  font-family: 'Courier New', monospace;
+}
+
+.hexdump {
+  font-family: 'Courier New', monospace;
+  font-size: 0.55rem;
+  color: rgba(0, 255, 65, 0.08);
+  line-height: 1.2;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 8px;
+  pointer-events: none;
+  z-index: 0;
+  white-space: pre;
+  overflow: hidden;
+  height: 60px;
+}
+
+.overlay-glitch {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1002;
+  mix-blend-mode: screen;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 2px,
+    rgba(255,0,68,0.03) 2px,
+    rgba(255,0,68,0.03) 4px
+  );
+}
+
+@media (max-width: 600px) {
+  .container { padding: 20px 15px; }
+  .grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="scanline"></div>
+<div class="crt"></div>
+<div class="overlay-glitch"></div>
+<div class="glitch-bars">
+  <div class="glitch-bar"></div>
+  <div class="glitch-bar"></div>
+  <div class="glitch-bar"></div>
+  <div class="glitch-bar"></div>
+  <div class="glitch-bar"></div>
+  <div class="glitch-bar"></div>
+</div>
+
+<div class="hexdump">
+00000000  53 59 53 54 45 4d  20 43 4f 52 52 55  50 54 49 4f 4e  |SYSTEM_CORRUPTION|
+00000012  20 44 45 54 45 43  54 45 44 20 21 21  21 0a 52 45 51  |_DETECTED_!!!.REQ|
+00000024  55 45 53 54 49 4e  47 20 49 4d 4d 45  44 49 41 54 45  |UESTING_IMMEDIATE|
+00000036  20 52 45 42 4f 4f  54 20 2f 2f 20 45  52 52 4f 52 20  |_REBOOT_//_ERROR_|
+</div>
+
+<div class="container">
+  <header>
+    <div class="logo" data-text="SEASON SLICE">SEASON SLICE</div>
+    <span class="logo-sub">Premium Coffee &amp; Cafe Experience</span>
+    <div class="sys-badge">⚠ SYS::ERR 0xDEADBEEF</div>
+  </header>
+
+  <div class="error-banner">
+    <div class="error-banner-content">
+      <div class="error-code">[FATAL] 0x7E: SYSTEM_CORRUPTION :: Unable to render page content. Displaying cached fragments.</div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="card-icon">☕</div>
+      <h3>Artisan Coffee</h3>
+      <p>Hand-picked single origin beans sourced from the <span class="corrupted-text">highlands of Ethiopia and Colombia</span> ████████████████ roasted to perfection.</p>
+      <div class="price">~~$4.99~~ ERR</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🍰</div>
+      <h3>Signature Cakes</h3>
+      <p>Blueberry <span class="corrupted-text">cheesecake • chocolate truffle • matcha</span> ███ layered with premium ██████ cream.</p>
+      <div class="price">~~$6.99~~ ERR</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🥐</div>
+      <h3>Fresh Bakes</h3>
+      <p>Artisanal croissants, <span class="corrupted-text">cinnamon rolls, and danishes</span> █████ baked fresh every ██████ morning █████.</p>
+      <div class="price">~~$3.99~~ ERR</div>
+    </div>
+  </div>
+
+  <div class="menu-section">
+    <h2 data-glitch="Beverages">Beverages</h2>
+    <div class="menu-items">
+      <div class="menu-item">
+        <div class="name">Espresso Corrupto</div>
+        <div class="desc">Rich double shot with ██████ caramel undertones</div>
+        <div class="meta"><span>$3.50</span><span>~~$4.00~~</span></div>
+      </div>
+      <div class="menu-item">
+        <div class="name">Latte Macchiato</div>
+        <div class="desc">Steamed milk poured over <span class="corrupted-text">espresso</span> █████</div>
+        <div class="meta"><span>$4.50</span><span>~~$5.00~~</span></div>
+      </div>
+      <div class="menu-item">
+        <div class="name">Cold Brew #ERR</div>
+        <div class="desc">█ 24-hour steep ████ smooth finish █████</div>
+        <div class="meta"><span>$4.00</span><span>~~$4.75~~</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="menu-section">
+    <h2 data-glitch="Location">Location</h2>
+    <div class="menu-items">
+      <div class="menu-item">
+        <div class="name">📍 Chembur West, Mumbai</div>
+        <div class="desc">The Baya Junction ██████ Shop no 8 ████████ Rd Number 6</div>
+        <div class="meta"><span>⏰ 09:00 - 21:00</span><span>MON-SAT</span></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2024 SEASON SLICE CAFE // ALL RIGHTS CORRUPTED</p>
+    <p style="margin-top:8px;font-size:0.6rem;color:rgba(0,255,65,0.1);">SYSTEM INTEGRITY COMPROMISED :: REBOOT REQUIRED :: ERR_CODE: 0xC0FFEE</p>
+  </footer>
+</div>
+
+<script>
+let glitchInterval;
+function randomGlitch() {
+  if (Math.random() > 0.7) {
+    document.querySelector('.logo').style.transform = `translate(${Math.random()*6-3}px, ${Math.random()*6-3}px) skew(${Math.random()*4-2}deg)`;
+    document.querySelector('.logo').style.filter = `hue-rotate(${Math.random()*360}deg)`;
+    setTimeout(() => {
+      document.querySelector('.logo').style.transform = '';
+      document.querySelector('.logo').style.filter = '';
+    }, 100 + Math.random() * 200);
+  }
+}
+setInterval(randomGlitch, 800);
+
+setInterval(() => {
+  if (Math.random() > 0.85) {
+    document.querySelector('.error-banner').style.borderColor = '#00ff41';
+    setTimeout(() => {
+      document.querySelector('.error-banner').style.borderColor = 'rgba(255, 0, 68, 0.3)';
+    }, 100);
+  }
+}, 2000);
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.title = document.title.split('').sort(() => Math.random() - 0.5).join('');
+  setTimeout(() => {
+    document.title = 'SEASON SLICE - SYS_ERR';
+  }, 2000);
+});
+</script>
+
+</body>
+</html>
