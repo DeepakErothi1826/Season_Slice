@@ -94,11 +94,13 @@ function App() {
   return (
     <div style={styles.container}>
       <div style={styles.card}>
-        <div style={styles.symbol}>🖕</div>
-
-        <h1 style={styles.heading}>FUCK YOU</h1>
-
-        <p style={styles.text}>SeasonSlice</p>
+        <h1 style={styles.heading}>🚧 Website Under Development</h1>
+        <p style={styles.text}>
+          Season Slice is currently under maintenance.
+        </p>
+        <p style={styles.subText}>
+          Please check back soon.
+        </p>
       </div>
     </div>
   );
@@ -108,36 +110,35 @@ const styles = {
   container: {
     width: "100%",
     height: "100vh",
-    backgroundColor: "#000",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    overflow: "hidden",
+    background: "#0f172a",
+    color: "#fff",
     margin: 0,
+    overflow: "hidden",
+    position: "fixed",
+    top: 0,
+    left: 0,
+    zIndex: 999999,
     fontFamily: "Arial, sans-serif",
   },
-
   card: {
     textAlign: "center",
-    color: "#fff",
+    padding: "30px",
   },
-
-  symbol: {
-    fontSize: "120px",
-    marginBottom: "20px",
-  },
-
   heading: {
-    fontSize: "4rem",
-    color: "red",
-    margin: 0,
-    letterSpacing: "3px",
+    fontSize: "3rem",
+    marginBottom: "15px",
   },
-
   text: {
-    fontSize: "2rem",
-    color: "#aaa",
-    marginTop: "10px",
+    fontSize: "1.3rem",
+    marginBottom: "10px",
+    color: "#cbd5e1",
+  },
+  subText: {
+    fontSize: "1rem",
+    color: "#94a3b8",
   },
 };
 
